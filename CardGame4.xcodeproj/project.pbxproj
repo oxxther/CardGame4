@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		220CDAD6244710BD00548E9B /* ZOXXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */; };
+		220CDADD2447FA7D00548E9B /* ZOXXCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDADC2447FA7D00548E9B /* ZOXXCardData.m */; };
+		220CDAE0244804E200548E9B /* ZOXXPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDADF244804E200548E9B /* ZOXXPlayer.m */; };
+		220CDAE424480A3600548E9B /* ZOXXCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAE324480A3600548E9B /* ZOXXCard.m */; };
+		220CDAE924482B2F00548E9B /* renWu05.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAE724482B2F00548E9B /* renWu05.png */; };
+		220CDAEA24482B2F00548E9B /* renWu03.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAE824482B2F00548E9B /* renWu03.png */; };
+		220CDAED24482DF400548E9B /* touXiang03.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAEB24482DF400548E9B /* touXiang03.png */; };
+		220CDAEE24482DF400548E9B /* touXiang05.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAEC24482DF400548E9B /* touXiang05.png */; };
+		220CDAF1244833CC00548E9B /* ZOXXGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAF0244833CC00548E9B /* ZOXXGameManager.m */; };
+		22FCCFEB24458CCD008FE3B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */; };
+		22FCCFED24458CCD008FE3B9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFEC24458CCD008FE3B9 /* GameScene.sks */; };
+		22FCCFEF24458CCD008FE3B9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFEE24458CCD008FE3B9 /* Actions.sks */; };
+		22FCCFF224458CCD008FE3B9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFF124458CCD008FE3B9 /* GameScene.m */; };
+		22FCCFF524458CCD008FE3B9 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFF424458CCD008FE3B9 /* GameViewController.m */; };
+		22FCCFF824458CCD008FE3B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFF624458CCD008FE3B9 /* Main.storyboard */; };
+		22FCCFFA24458CCE008FE3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFF924458CCE008FE3B9 /* Assets.xcassets */; };
+		22FCCFFD24458CCE008FE3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFFB24458CCE008FE3B9 /* LaunchScreen.storyboard */; };
+		22FCD00024458CCE008FE3B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFFF24458CCE008FE3B9 /* main.m */; };
+		22FCD00924458D7B008FE3B9 /* ZOXXBeginSceneFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD00824458D7B008FE3B9 /* ZOXXBeginSceneFirst.m */; };
+		22FCD00B24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCD00A24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks */; };
+		22FCD0182445AFCD008FE3B9 /* ZOXXAlertViewControll.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */; };
+		22FCD01F2445B900008FE3B9 /* ZOXXMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD01E2445B900008FE3B9 /* ZOXXMainScene.m */; };
+		22FCD0212445B91C008FE3B9 /* ZOXXMainSceneView.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCD0202445B91C008FE3B9 /* ZOXXMainSceneView.sks */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		220CDAD4244710BD00548E9B /* ZOXXGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXGameViewController.h; sourceTree = "<group>"; };
+		220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXGameViewController.m; sourceTree = "<group>"; };
+		220CDADB2447FA7D00548E9B /* ZOXXCardData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXCardData.h; sourceTree = "<group>"; };
+		220CDADC2447FA7D00548E9B /* ZOXXCardData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXCardData.m; sourceTree = "<group>"; };
+		220CDADE244804E200548E9B /* ZOXXPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXPlayer.h; sourceTree = "<group>"; };
+		220CDADF244804E200548E9B /* ZOXXPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXPlayer.m; sourceTree = "<group>"; };
+		220CDAE224480A3600548E9B /* ZOXXCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXCard.h; sourceTree = "<group>"; };
+		220CDAE324480A3600548E9B /* ZOXXCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXCard.m; sourceTree = "<group>"; };
+		220CDAE724482B2F00548E9B /* renWu05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renWu05.png; sourceTree = "<group>"; };
+		220CDAE824482B2F00548E9B /* renWu03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renWu03.png; sourceTree = "<group>"; };
+		220CDAEB24482DF400548E9B /* touXiang03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touXiang03.png; sourceTree = "<group>"; };
+		220CDAEC24482DF400548E9B /* touXiang05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touXiang05.png; sourceTree = "<group>"; };
+		220CDAEF244833CC00548E9B /* ZOXXGameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXGameManager.h; sourceTree = "<group>"; };
+		220CDAF0244833CC00548E9B /* ZOXXGameManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXGameManager.m; sourceTree = "<group>"; };
+		22FCCFE624458CCD008FE3B9 /* CardGame4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame4.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FCCFE924458CCD008FE3B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		22FCCFEC24458CCD008FE3B9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		22FCCFEE24458CCD008FE3B9 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		22FCCFF024458CCD008FE3B9 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		22FCCFF124458CCD008FE3B9 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		22FCCFF324458CCD008FE3B9 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		22FCCFF424458CCD008FE3B9 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		22FCCFF724458CCD008FE3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22FCCFF924458CCE008FE3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22FCCFFC24458CCE008FE3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22FCCFFE24458CCE008FE3B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22FCCFFF24458CCE008FE3B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		22FCD00724458D7B008FE3B9 /* ZOXXBeginSceneFirst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXBeginSceneFirst.h; sourceTree = "<group>"; };
+		22FCD00824458D7B008FE3B9 /* ZOXXBeginSceneFirst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXBeginSceneFirst.m; sourceTree = "<group>"; };
+		22FCD00A24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXBeginSceneFirst.sks; sourceTree = "<group>"; };
+		22FCD0162445AFCD008FE3B9 /* ZOXXAlertViewControll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXAlertViewControll.h; sourceTree = "<group>"; };
+		22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXAlertViewControll.m; sourceTree = "<group>"; };
+		22FCD01D2445B900008FE3B9 /* ZOXXMainScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXMainScene.h; sourceTree = "<group>"; };
+		22FCD01E2445B900008FE3B9 /* ZOXXMainScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXMainScene.m; sourceTree = "<group>"; };
+		22FCD0202445B91C008FE3B9 /* ZOXXMainSceneView.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXMainSceneView.sks; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22FCCFE324458CCD008FE3B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		220CDAD72447F99A00548E9B /* GameModel */ = {
+			isa = PBXGroup;
+			children = (
+				220CDADB2447FA7D00548E9B /* ZOXXCardData.h */,
+				220CDADC2447FA7D00548E9B /* ZOXXCardData.m */,
+				220CDADE244804E200548E9B /* ZOXXPlayer.h */,
+				220CDADF244804E200548E9B /* ZOXXPlayer.m */,
+				220CDAEF244833CC00548E9B /* ZOXXGameManager.h */,
+				220CDAF0244833CC00548E9B /* ZOXXGameManager.m */,
+			);
+			path = GameModel;
+			sourceTree = "<group>";
+		};
+		220CDAE124480A1900548E9B /* GameView */ = {
+			isa = PBXGroup;
+			children = (
+				220CDAE224480A3600548E9B /* ZOXXCard.h */,
+				220CDAE324480A3600548E9B /* ZOXXCard.m */,
+			);
+			path = GameView;
+			sourceTree = "<group>";
+		};
+		220CDAE524482A2D00548E9B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				220CDAE624482A3A00548E9B /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		220CDAE624482A3A00548E9B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				220CDAEB24482DF400548E9B /* touXiang03.png */,
+				220CDAEC24482DF400548E9B /* touXiang05.png */,
+				220CDAE824482B2F00548E9B /* renWu03.png */,
+				220CDAE724482B2F00548E9B /* renWu05.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		22FCCFDD24458CCD008FE3B9 = {
+			isa = PBXGroup;
+			children = (
+				22FCCFE824458CCD008FE3B9 /* CardGame4 */,
+				22FCCFE724458CCD008FE3B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22FCCFE724458CCD008FE3B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCFE624458CCD008FE3B9 /* CardGame4.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22FCCFE824458CCD008FE3B9 /* CardGame4 */ = {
+			isa = PBXGroup;
+			children = (
+				220CDAE524482A2D00548E9B /* Resources */,
+				220CDAE124480A1900548E9B /* GameView */,
+				220CDAD72447F99A00548E9B /* GameModel */,
+				22FCCFEE24458CCD008FE3B9 /* Actions.sks */,
+				22FCD01B2445B8B3008FE3B9 /* ZOXXMainGameScene */,
+				22FCD01A2445B880008FE3B9 /* Example */,
+				22FCD0192445AFD6008FE3B9 /* ZOXXCustomView */,
+				22FCD00624458D30008FE3B9 /* ZOXXBeginScene */,
+				22FCCFE924458CCD008FE3B9 /* AppDelegate.h */,
+				22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */,
+				22FCCFF324458CCD008FE3B9 /* GameViewController.h */,
+				22FCCFF424458CCD008FE3B9 /* GameViewController.m */,
+				22FCCFF624458CCD008FE3B9 /* Main.storyboard */,
+				22FCCFF924458CCE008FE3B9 /* Assets.xcassets */,
+				22FCCFFB24458CCE008FE3B9 /* LaunchScreen.storyboard */,
+				22FCCFFE24458CCE008FE3B9 /* Info.plist */,
+				22FCCFFF24458CCE008FE3B9 /* main.m */,
+				220CDAD4244710BD00548E9B /* ZOXXGameViewController.h */,
+				220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */,
+			);
+			path = CardGame4;
+			sourceTree = "<group>";
+		};
+		22FCD00624458D30008FE3B9 /* ZOXXBeginScene */ = {
+			isa = PBXGroup;
+			children = (
+				22FCD00724458D7B008FE3B9 /* ZOXXBeginSceneFirst.h */,
+				22FCD00824458D7B008FE3B9 /* ZOXXBeginSceneFirst.m */,
+				22FCD00A24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks */,
+			);
+			path = ZOXXBeginScene;
+			sourceTree = "<group>";
+		};
+		22FCD0192445AFD6008FE3B9 /* ZOXXCustomView */ = {
+			isa = PBXGroup;
+			children = (
+				22FCD0162445AFCD008FE3B9 /* ZOXXAlertViewControll.h */,
+				22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */,
+			);
+			path = ZOXXCustomView;
+			sourceTree = "<group>";
+		};
+		22FCD01A2445B880008FE3B9 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				22FCCFEC24458CCD008FE3B9 /* GameScene.sks */,
+				22FCCFF024458CCD008FE3B9 /* GameScene.h */,
+				22FCCFF124458CCD008FE3B9 /* GameScene.m */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		22FCD01B2445B8B3008FE3B9 /* ZOXXMainGameScene */ = {
+			isa = PBXGroup;
+			children = (
+				22FCD01D2445B900008FE3B9 /* ZOXXMainScene.h */,
+				22FCD01E2445B900008FE3B9 /* ZOXXMainScene.m */,
+				22FCD0202445B91C008FE3B9 /* ZOXXMainSceneView.sks */,
+			);
+			path = ZOXXMainGameScene;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22FCCFE524458CCD008FE3B9 /* CardGame4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22FCD00324458CCE008FE3B9 /* Build configuration list for PBXNativeTarget "CardGame4" */;
+			buildPhases = (
+				22FCCFE224458CCD008FE3B9 /* Sources */,
+				22FCCFE324458CCD008FE3B9 /* Frameworks */,
+				22FCCFE424458CCD008FE3B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CardGame4;
+			productName = CardGame4;
+			productReference = 22FCCFE624458CCD008FE3B9 /* CardGame4.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22FCCFDE24458CCD008FE3B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ZOXX;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = oxxther;
+				TargetAttributes = {
+					22FCCFE524458CCD008FE3B9 = {
+						CreatedOnToolsVersion = 11.3;
+					};
+				};
+			};
+			buildConfigurationList = 22FCCFE124458CCD008FE3B9 /* Build configuration list for PBXProject "CardGame4" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22FCCFDD24458CCD008FE3B9;
+			productRefGroup = 22FCCFE724458CCD008FE3B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22FCCFE524458CCD008FE3B9 /* CardGame4 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22FCCFE424458CCD008FE3B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22FCCFF824458CCD008FE3B9 /* Main.storyboard in Resources */,
+				220CDAED24482DF400548E9B /* touXiang03.png in Resources */,
+				22FCD0212445B91C008FE3B9 /* ZOXXMainSceneView.sks in Resources */,
+				22FCCFED24458CCD008FE3B9 /* GameScene.sks in Resources */,
+				220CDAEA24482B2F00548E9B /* renWu03.png in Resources */,
+				22FCCFFA24458CCE008FE3B9 /* Assets.xcassets in Resources */,
+				220CDAE924482B2F00548E9B /* renWu05.png in Resources */,
+				22FCCFFD24458CCE008FE3B9 /* LaunchScreen.storyboard in Resources */,
+				22FCD00B24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks in Resources */,
+				220CDAEE24482DF400548E9B /* touXiang05.png in Resources */,
+				22FCCFEF24458CCD008FE3B9 /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22FCCFE224458CCD008FE3B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22FCD01F2445B900008FE3B9 /* ZOXXMainScene.m in Sources */,
+				22FCCFF224458CCD008FE3B9 /* GameScene.m in Sources */,
+				220CDADD2447FA7D00548E9B /* ZOXXCardData.m in Sources */,
+				22FCD0182445AFCD008FE3B9 /* ZOXXAlertViewControll.m in Sources */,
+				22FCCFF524458CCD008FE3B9 /* GameViewController.m in Sources */,
+				220CDAE0244804E200548E9B /* ZOXXPlayer.m in Sources */,
+				22FCD00024458CCE008FE3B9 /* main.m in Sources */,
+				220CDAD6244710BD00548E9B /* ZOXXGameViewController.m in Sources */,
+				220CDAE424480A3600548E9B /* ZOXXCard.m in Sources */,
+				22FCCFEB24458CCD008FE3B9 /* AppDelegate.m in Sources */,
+				220CDAF1244833CC00548E9B /* ZOXXGameManager.m in Sources */,
+				22FCD00924458D7B008FE3B9 /* ZOXXBeginSceneFirst.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		22FCCFF624458CCD008FE3B9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22FCCFF724458CCD008FE3B9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22FCCFFB24458CCE008FE3B9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22FCCFFC24458CCE008FE3B9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22FCD00124458CCE008FE3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		22FCD00224458CCE008FE3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22FCD00424458CCE008FE3B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D84GWVZ9W2;
+				INFOPLIST_FILE = CardGame4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oxxther.CardGame4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22FCD00524458CCE008FE3B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = D84GWVZ9W2;
+				INFOPLIST_FILE = CardGame4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.oxxther.CardGame4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22FCCFE124458CCD008FE3B9 /* Build configuration list for PBXProject "CardGame4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22FCD00124458CCE008FE3B9 /* Debug */,
+				22FCD00224458CCE008FE3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22FCD00324458CCE008FE3B9 /* Build configuration list for PBXNativeTarget "CardGame4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22FCD00424458CCE008FE3B9 /* Debug */,
+				22FCD00524458CCE008FE3B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22FCCFDE24458CCD008FE3B9 /* Project object */;
+}

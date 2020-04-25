@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZOXXAlertViewController">
+            <connections>
+                <outlet property="leftButton" destination="gV9-vm-2We" id="cXh-3v-Z6u"/>
+                <outlet property="rightButton" destination="tse-Fc-PQ6" id="sQu-4X-JQb"/>
+                <outlet property="showContentLabel" destination="h0K-vx-Or4" id="Cie-QA-Ze7"/>
+                <outlet property="view" destination="6Ld-VZ-IVb" id="arL-L9-IP6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6Ld-VZ-IVb">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zFR-4r-73U">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewHandPage5.png" translatesAutoresizingMaskIntoConstraints="NO" id="qUa-hJ-bqV">
+                    <rect key="frame" x="76.5" y="341.5" width="261" height="213"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="261" id="5kp-9M-HLk"/>
+                        <constraint firstAttribute="height" constant="213" id="p2B-h4-TWw"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-vx-Or4">
+                    <rect key="frame" x="102.5" y="413" width="209" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gV9-vm-2We">
+                    <rect key="frame" x="118.5" y="502.5" width="77" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="4F5-hE-4aY"/>
+                        <constraint firstAttribute="width" constant="77" id="zb6-Ob-h1z"/>
+                    </constraints>
+                    <state key="normal" title="Button" backgroundImage="NewHandPage7.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="lclick:" destination="-1" eventType="touchUpInside" id="uNI-dK-yw7"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tse-Fc-PQ6">
+                    <rect key="frame" x="218.5" y="502.5" width="77" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="77" id="Byf-Aj-5JS"/>
+                        <constraint firstAttribute="height" constant="31" id="SCX-FH-gnc"/>
+                    </constraints>
+                    <state key="normal" title="Button" backgroundImage="NewHandPage6.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="rclick:" destination="-1" eventType="touchUpInside" id="PGv-ZF-GkG"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="h0K-vx-Or4" firstAttribute="width" secondItem="qUa-hJ-bqV" secondAttribute="width" multiplier="0.8" id="CgS-b1-706"/>
+                <constraint firstItem="tse-Fc-PQ6" firstAttribute="centerY" secondItem="6Ld-VZ-IVb" secondAttribute="centerY" constant="70" id="JE4-OI-zir"/>
+                <constraint firstItem="tse-Fc-PQ6" firstAttribute="centerX" secondItem="6Ld-VZ-IVb" secondAttribute="centerX" constant="50" id="Lag-Dc-9Oe"/>
+                <constraint firstItem="zFR-4r-73U" firstAttribute="top" secondItem="6Ld-VZ-IVb" secondAttribute="top" id="Ngu-aF-Gt0"/>
+                <constraint firstItem="qUa-hJ-bqV" firstAttribute="centerX" secondItem="6Ld-VZ-IVb" secondAttribute="centerX" id="RYa-rc-FzZ"/>
+                <constraint firstItem="zFR-4r-73U" firstAttribute="leading" secondItem="Shl-b6-Nhq" secondAttribute="leading" id="Soo-ka-nAB"/>
+                <constraint firstItem="h0K-vx-Or4" firstAttribute="centerX" secondItem="6Ld-VZ-IVb" secondAttribute="centerX" id="Vh5-LP-Jtc"/>
+                <constraint firstItem="gV9-vm-2We" firstAttribute="centerY" secondItem="6Ld-VZ-IVb" secondAttribute="centerY" constant="70" id="W0u-9f-x7F"/>
+                <constraint firstAttribute="bottom" secondItem="zFR-4r-73U" secondAttribute="bottom" id="WeW-V6-RHi"/>
+                <constraint firstItem="h0K-vx-Or4" firstAttribute="centerY" secondItem="6Ld-VZ-IVb" secondAttribute="centerY" constant="-25" id="idj-Zf-Wya"/>
+                <constraint firstItem="gV9-vm-2We" firstAttribute="centerX" secondItem="6Ld-VZ-IVb" secondAttribute="centerX" constant="-50" id="mho-ey-ALC"/>
+                <constraint firstItem="zFR-4r-73U" firstAttribute="trailing" secondItem="Shl-b6-Nhq" secondAttribute="trailing" id="ngr-3M-eoD"/>
+                <constraint firstItem="qUa-hJ-bqV" firstAttribute="centerY" secondItem="6Ld-VZ-IVb" secondAttribute="centerY" id="o3G-iP-oE8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Shl-b6-Nhq"/>
+            <point key="canvasLocation" x="128" y="1380"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="NewHandPage5.png" width="782" height="640"/>
+        <image name="NewHandPage6.png" width="344" height="137"/>
+        <image name="NewHandPage7.png" width="344" height="137"/>
+    </resources>
+</document>

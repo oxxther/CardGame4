@@ -7,17 +7,51 @@
 //
 
 #import "ZOXXGameManager.h"
+#import "ZOXXSpriteButton.h"
 
-@interface ZOXXGameManager ()
+#import "ZOXXAlertViewController.h"
+
+
+#import "ZOXXBeginSceneFirst.h"
+#import "GameViewController.h"
+#import "ZOXXSelectLevelScene.h"
+
+#import "ZOXXSaveData.h"
+
+#import "ZOXXLogPlayer.h"
+
+@interface ZOXXGameManager ()<ZOXXSpriteButtonDelegate,ZOXXCardDelegate>
 {
     SKNode *_wanjiashoupaiNode;
     SKNode *_laodashoupaiNode;
     SKNode *_useCardShowNode;
+    SKSpriteNode *_WanJiaOpetarionArea;
+    ZOXXSpriteButton *_useBtn;
+    ZOXXSpriteButton *_noUseBtn;
+    ZOXXCard *_currentUseCard;
+    ZOXXCard *_currentLaoDaUseCard;
+    
+    SKSpriteNode *_WanJiaXueTiao;
+    SKSpriteNode *_WanJiaXueTiaoBG;
+    SKLabelNode *_WanJiaXueTiaoNum;
+    SKSpriteNode *_WanJiaLanTiao;
+    SKSpriteNode *_WanJiaLanTiaoBG;
+    SKLabelNode *_WanJiaLanTiaoNum;
+    SKLabelNode *_WanJiaGongJi;
+    SKLabelNode *_WanJiaFangYu;
+    
+    SKSpriteNode *_LaoDaXueTiao;
+    SKSpriteNode *_LaoDaXueTiaoBG;
+    SKLabelNode *_LaoDaXueTiaoNum;
+    SKSpriteNode *_LaoDaLanTiao;
+    SKSpriteNode *_LaoDaLanTiaoBG;
+    SKLabelNode *_LaoDaLanTiaoNum;
+    SKLabelNode *_LaoDaGongJi;
+    SKLabelNode *_LaoDaFangYu;
 }
 
 @property (nonatomic) BOOL isMyTurn;
 
-@property (nonatomic) NSUInteger useDaZuo;
 
 @end
 
@@ -25,32 +59,59 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-//        _isMyTurn = arc4random() % 2;
-        _isMyTurn = NO;
-        _useDaZuo = 0;
+        if ([ZOXXSaveData sharedPlayer].diyiciwan) {
+            _isMyTurn = YES;
+        }else{
+            _isMyTurn = arc4random() % 2;
+        }
     }
     return self;
 }
 
 - (void)gameStart:(void (^)(void))finishedBlock{
+    
     //预设定位置
     _useCardShowNode = [self.scene childNodeWithName:@"//UseCardShow"];
-    ZOXXCard *cardShow = [[ZOXXCard alloc] initWithColor:[UIColor greenColor] size:CGSizeMake(200, 300)];
+    ZOXXCard *cardShow = [[ZOXXCard alloc] initWithDelegate:self andTag:ZOXXCardLabelTypeCenter];
+    cardShow.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"MainPage10.png"]]];
+    _useCardShowNode.hidden = YES;
     [_useCardShowNode addChild:cardShow];
+    
+    _WanJiaOpetarionArea = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaOpetarionArea"];
+    //创建自定义控件
+    ZOXXSpriteButton *useBtn = [[ZOXXSpriteButton alloc] initWithColor:[UIColor orangeColor] size:CGSizeMake(146, 110)];
+    useBtn.delegate = self;
+    useBtn.canClickImage = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"MainPage12.png"]]];
+    useBtn.cannotClickImage = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"MainPage11.png"]]];
+    useBtn.texture = useBtn.cannotClickImage;
+    useBtn.position = CGPointMake(-73, -293 /2.0 + 64);
+    [_WanJiaOpetarionArea addChild:useBtn];
+    _useBtn = useBtn;
+    
+    ZOXXSpriteButton *noUseBtn = [[ZOXXSpriteButton alloc] initWithColor:[UIColor orangeColor] size:CGSizeMake(146, 110)];
+    noUseBtn.delegate = self;
+    noUseBtn.canClickImage = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"MainPage13.png"]]];
+    noUseBtn.cannotClickImage = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:@"MainPage16.png"]]];
+    noUseBtn.texture = noUseBtn.cannotClickImage;
+    noUseBtn.position = CGPointMake(-73, -293 /2.0 -64);
+    [_WanJiaOpetarionArea addChild:noUseBtn];
+    _noUseBtn = noUseBtn;
     
     //
     SKNode *_StartEffect = [self.scene childNodeWithName:@"//StartEffect"];
     SKSpriteNode *_WanJiaSpriteNode = (SKSpriteNode *)[self.scene childNodeWithName:@"//StartEffect//WanJia"];
     SKSpriteNode *_LaoDaSpriteNode = (SKSpriteNode *)[self.scene childNodeWithName:@"//StartEffect//LaoDa"];
+    
+    _WanJiaSpriteNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:self.wanjia.headerImage]];
+    _LaoDaSpriteNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:self.laoda.headerImage]];
+    
     SKSpriteNode *_DuelSpriteNode = (SKSpriteNode *)[self.scene childNodeWithName:@"//StartEffect//DuelFlag"];
     _DuelSpriteNode.hidden = YES;
     
     __weak typeof(_LaoDaSpriteNode) weakSelf_ld = _LaoDaSpriteNode;
-    _LaoDaSpriteNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:_laoda.headerImage]];
     [_LaoDaSpriteNode runAction:[SKAction actionNamed:@"LaoDaEnter"]];
     
     __weak typeof(_WanJiaSpriteNode) weakSelf_wj = _WanJiaSpriteNode;
-    _WanJiaSpriteNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:_wanjia.headerImage]];
     [_WanJiaSpriteNode runAction:[SKAction actionNamed:@"WanJiaEnter"] completion:^{
         
         //再对对决效果动画
@@ -62,7 +123,7 @@
         
         __weak typeof(_DuelSpriteNode) weakSelf_duel = _DuelSpriteNode;
         [_DuelSpriteNode runAction:scaleActions completion:^{
-            [_StartEffect runAction:[SKAction fadeAlphaTo:0 duration:0.25] completion:^{
+            [_StartEffect runAction:[SKAction fadeAlphaTo:0 duration:0.5] completion:^{
                 weakSelf_wj.hidden = YES;
                 weakSelf_ld.hidden = YES;
                 weakSelf_duel.hidden = YES;
@@ -85,14 +146,61 @@
 }
 
 - (ZOXXPlayer *)createWanJiaPlayer{
-    ZOXXPlayer *wanjia = [ZOXXPlayer createWithType:MenPaiAddressTypeDaXueShan];
+    ZOXXPlayer *wanjia = [ZOXXPlayer createWithType:MenPaiAddressTypeErCiYueAiHaoZhe];
+    wanjia.headerImageNode = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaHeadImage"];
     self.wanjia = wanjia;
+    wanjia.headerImageNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:self.wanjia.headerImage]];
+    
+    _WanJiaXueTiao = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaShengMingNow"];
+    _WanJiaXueTiaoBG = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaShengMing"];
+    CGFloat s = self.wanjia.shengming / self.wanjia.shengmingshangxian;
+    _WanJiaXueTiao.size = CGSizeMake(_WanJiaXueTiaoBG.size.width * s, _WanJiaXueTiaoBG.size.height);
+    
+    _WanJiaXueTiaoNum = (SKLabelNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaShengMingNum"];
+    _WanJiaXueTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.wanjia.shengming,self.wanjia.shengmingshangxian];
+    
+    _WanJiaLanTiao = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaNeiLiNow"];
+    _WanJiaLanTiaoBG = (SKSpriteNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaNeiLi"];
+    s = self.wanjia.neili / self.wanjia.neilishangxian;
+    _WanJiaLanTiao.size = CGSizeMake(_WanJiaLanTiaoBG.size.width * s, _WanJiaLanTiaoBG.size.height);
+    
+    _WanJiaLanTiaoNum = (SKLabelNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaNeiLiNum"];
+    _WanJiaLanTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.wanjia.neili,self.wanjia.neilishangxian];
+    
+    _WanJiaGongJi = (SKLabelNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaGongJi"];
+    _WanJiaGongJi.text = [NSString stringWithFormat:@"%ld",self.wanjia.gongji];
+    _WanJiaFangYu = (SKLabelNode *)[self.scene childNodeWithName:@"//WanJiaDetail//WanJiaBeiJing//WanJiaFangYu"];
+    _WanJiaFangYu.text = [NSString stringWithFormat:@"%ld",self.wanjia.fangyu];
     return wanjia;
 }
 
 - (ZOXXPlayer *)createLaoDaPlayer{
-    ZOXXPlayer *laoda = [ZOXXPlayer createWithType:MenPaiAddressTypeBingHuoDao];
+    ZOXXPlayer *laoda = [ZOXXPlayer createWithType:[ZOXXSaveData sharedPlayer].currentgk];
+    NSLog(@"%@",laoda.name);
+    laoda.headerImageNode = (SKSpriteNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaHeadImage"];
     self.laoda = laoda;
+    laoda.headerImageNode.texture = [SKTexture textureWithImage:[UIImage imageWithContentsOfFile:self.laoda.headerImage]];
+    
+    _LaoDaXueTiao = (SKSpriteNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaShengMingNow"];
+    _LaoDaXueTiaoBG = (SKSpriteNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaShengMing"];
+    CGFloat s = self.laoda.shengming / self.laoda.shengmingshangxian;
+    _LaoDaXueTiao.size = CGSizeMake(_LaoDaXueTiaoBG.size.width * s, _LaoDaXueTiaoBG.size.height);
+    
+    _LaoDaXueTiaoNum = (SKLabelNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaShengMingNum"];
+    _LaoDaXueTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.laoda.shengming,self.laoda.shengmingshangxian];
+    
+    _LaoDaLanTiao = (SKSpriteNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaNeiLiNow"];
+    _LaoDaLanTiaoBG = (SKSpriteNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaNeiLi"];
+    s = self.laoda.neili / self.laoda.neilishangxian;
+    _LaoDaLanTiao.size = CGSizeMake(_LaoDaLanTiaoBG.size.width * s, _LaoDaLanTiaoBG.size.height);
+    
+    _LaoDaLanTiaoNum = (SKLabelNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaNeiLiNum"];
+    _LaoDaLanTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.laoda.neili,self.laoda.neilishangxian];
+    
+    _LaoDaGongJi = (SKLabelNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaGongJi"];
+    _LaoDaGongJi.text = [NSString stringWithFormat:@"%ld",self.laoda.gongji];
+    _LaoDaFangYu = (SKLabelNode *)[self.scene childNodeWithName:@"//LaoDaDetail//LaoDaBeiJing//LaoDaFangYu"];
+    _LaoDaFangYu.text = [NSString stringWithFormat:@"%ld",self.laoda.fangyu];
     return laoda;
 }
 
@@ -101,24 +209,43 @@
     _wanjiashoupaiNode = wanjiaNode;
     NSMutableArray *shouPaiArray = [NSMutableArray array];
     //初始4张牌
-    for (int i = 0; i < 4; i++) {
-        ZOXXCard * node = [[ZOXXCard alloc] initWithColor:[UIColor redColor] size:CGSizeMake(200, 300)];
-        node.anchorPoint = CGPointMake(0, 0);
-        node.position = CGPointMake(-200, 0);
-        node.cardData = [self _createCardData];
-        [wanjiaNode addChild:node];
-        [shouPaiArray addObject:node];
+    
+    if (![ZOXXSaveData sharedPlayer].diyiciwan) {
+        for (int i = 0; i < 4; i++) {
+            ZOXXCard * node = [[ZOXXCard alloc] initWithDelegate:self andTag:ZOXXCardLabelTypeWanJia];
+            node.anchorPoint = CGPointMake(0, 0);
+            node.position = CGPointMake(-200, 0);
+            node.cardData = [self _createCardData];
+            [wanjiaNode addChild:node];
+            [shouPaiArray addObject:node];
+        }
+    }else{
+        for (int i = 0; i < 4; i++) {
+            ZOXXCard * node = [[ZOXXCard alloc] initWithDelegate:self andTag:ZOXXCardLabelTypeWanJia];
+            node.anchorPoint = CGPointMake(0, 0);
+            node.position = CGPointMake(-200, 0);
+            node.cardData = [ZOXXCardData createWithType:ZOXXCardTypePingA];
+            [wanjiaNode addChild:node];
+            [shouPaiArray addObject:node];
+        }
     }
+    
     self.wanjia.shoupaiArray = shouPaiArray;
     
     //动画执行
     for (int i = 0; i < shouPaiArray.count; i++) {
-        SKAction *action = [SKAction moveToX:0 + i* 210 duration:1];
+        SKAction *action = [SKAction moveToX:0 + i* (CardSize.width + 5) duration:0.5];
         ZOXXCard *card = shouPaiArray[i];
         [card runAction:action];
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+            card.origin = card.position;
+        }
+        for (ZOXXCard *card in self.laoda.shoupaiArray) {
+            card.origin = card.position;
+        }
         if (finishedBlock) {
             finishedBlock();
         }
@@ -130,33 +257,31 @@
     _laodashoupaiNode = laodaNode;
     NSMutableArray *shouPaiArray = [NSMutableArray array];
     //初始4张牌
-//    for (int i = 0; i < 4; i++) {
-//        ZOXXCard * node = [[ZOXXCard alloc] initWithColor:[UIColor redColor] size:CGSizeMake(200, 300)];
-//        node.anchorPoint = CGPointMake(0, 1);
-//        node.position = CGPointMake(-200, 0);
-//        node.cardData = [self _createCardData];
-//        [laodaNode addChild:node];
-//        [shouPaiArray addObject:node];
-//    }
-    for (int i = 0; i < 3; i++) {
-        ZOXXCard * node = [[ZOXXCard alloc] initWithColor:[UIColor redColor] size:CGSizeMake(200, 300)];
-        node.anchorPoint = CGPointMake(0, 1);
-        node.position = CGPointMake(-200, 0);
-        node.cardData = [self _createCardData];
-        [laodaNode addChild:node];
-        [shouPaiArray addObject:node];
+    if (![ZOXXSaveData sharedPlayer].diyiciwan) {
+        for (int i = 0; i < 4; i++) {
+            ZOXXCard * node = [[ZOXXCard alloc] initWithDelegate:self andTag:ZOXXCardLabelTypeLaoDa];
+            node.anchorPoint = CGPointMake(0, 1);
+            node.position = CGPointMake(-200, 0);
+            node.cardData = [self _createCardData];
+            [laodaNode addChild:node];
+            [shouPaiArray addObject:node];
+        }
+    }else{
+        for (int i = 0; i < 4; i++) {
+            ZOXXCard * node = [[ZOXXCard alloc] initWithDelegate:self andTag:ZOXXCardLabelTypeLaoDa];
+            node.anchorPoint = CGPointMake(0, 1);
+            node.position = CGPointMake(-200, 0);
+            node.cardData = [ZOXXCardData createWithType:ZOXXCardTypeMingXiang];
+            [laodaNode addChild:node];
+            [shouPaiArray addObject:node];
+        }
     }
-    ZOXXCard * node = [[ZOXXCard alloc] initWithColor:[UIColor redColor] size:CGSizeMake(200, 300)];
-    node.anchorPoint = CGPointMake(0, 1);
-    node.position = CGPointMake(-200, 0);
-    node.cardData = [ZOXXCardData createWithType:ZOXXCardTypeXiQi];
-    [laodaNode addChild:node];
-    [shouPaiArray addObject:node];
+    
     self.laoda.shoupaiArray = shouPaiArray;
     
     //动画执行
     for (int i = 0; i < shouPaiArray.count; i++) {
-        SKAction *action = [SKAction moveToX:0 + i* 210 duration:1];
+        SKAction *action = [SKAction moveToX:0 + i* (CardSize.width + 5) duration:0.5];
         ZOXXCard *card = shouPaiArray[i];
         [card runAction:action];
     }
@@ -169,253 +294,428 @@
 - (void)enterDrawCardWithNum:(NSInteger)cardNum complish:(void (^)(void))finishedBlock{
     NSMutableArray *array = [NSMutableArray array];
     for (int i = 0; i < cardNum; i++) {
-        ZOXXCard * node1 = [[ZOXXCard alloc] initWithColor:[UIColor redColor] size:CGSizeMake(200, 300)];
+        ZOXXCard * node1 = [[ZOXXCard alloc] initWithDelegate:self andTag:[self inMyTurn]];
         node1.cardData = [self _createCardData];
         node1.position = CGPointMake(-200, 0);
         [array addObject:node1];
     }
-    if (self.isMyTurn) {
+    if ([self inMyTurn]) {
         [self.wanjia.shoupaiArray addObjectsFromArray:array];
         for (ZOXXCard *cardNode in array) {
             cardNode.anchorPoint = CGPointMake(0, 0);
             [_wanjiashoupaiNode addChild:cardNode];
-            CGFloat x1 = [self.wanjia.shoupaiArray indexOfObject:cardNode] * 210;
-            [cardNode runAction:[SKAction moveToX:x1 duration:1]];
         }
+        
+        [self _layoutCardWithWanJia:YES completion:^{
+            if ([ZOXXSaveData sharedPlayer].diyiciwan) {
+                [((ZOXXMainScene *)self.scene) show1];
+            }
+        }];
+        _noUseBtn.userInteractionEnabled = YES;
+        
+        //初始化状态
     }else{
         [self.laoda.shoupaiArray addObjectsFromArray:array];
         for (ZOXXCard *cardNode in array) {
             cardNode.anchorPoint = CGPointMake(0, 1);
             [_laodashoupaiNode addChild:cardNode];
-            CGFloat x1 = [self.laoda.shoupaiArray indexOfObject:cardNode] * 210;
-            [cardNode runAction:[SKAction moveToX:x1 duration:1]];
         }
+        
+        [self _layoutCardWithWanJia:NO completion:nil];
+        
+        //初始化状态
+        _useBtn.userInteractionEnabled = NO;
+        _noUseBtn.userInteractionEnabled = NO;
     }
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //把手牌都激活
+    [self _jihuoWanJiaShouPai];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (finishedBlock) {
+            for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+                card.origin = card.position;
+            }
+            for (ZOXXCard *card in self.laoda.shoupaiArray) {
+                card.origin = card.position;
+            }
             finishedBlock();
         }
     });
 }
 
 - (void)enterUseCard{
-    if (self.isMyTurn) {
-        //等待玩家使用牌
+    if ([self inMyTurn]) {
+        [self _jihuoWanJiaShouPai];
     }else{
         //电脑人使用牌
         //电脑人的玩法规则
         /**
-         1.寻找有没有妙手牌，
-         2.寻找有没有打坐牌，
+         1.寻找有没有冥想牌，
          3.寻找有没有兵器牌，
          4.寻找有木有服饰牌，
-         5.寻找有没有破防牌，
-         6.寻找有没有令牌牌，
-         7.寻找有没有吸气牌，
-         8.寻找有没有合适的攻击技能，（忽略）
-         9.寻找有没有拳攻或兵攻牌，有的话就寻找有没有加力牌
+         5.寻找有没有普攻，
+         6.寻找有没有技能1，
+         7.寻找有没有技能2，
          */
-        //1.寻找有没有妙手牌，
-        if ([self _lookupCardWith:NO andCardType:ZOXXCardTypeMiaoShou]) {
+        
+        _useBtn.userInteractionEnabled = NO;
+        _noUseBtn.userInteractionEnabled = NO;
+        
+        //1.寻找有没有冥想牌，
+        ZOXXCard *card = nil;
+        if ((self.laoda.neili != self.laoda.neilishangxian) && (card = [self _laodaLookupCardType:ZOXXCardTypeMingXiang])) {
+            [self _laodaUserCard:card andWanjia:NO andNeedRespond:YES];
             return;
         }
         
-        //2.寻找有没有打坐牌，
-        if ([self _needLookUpDaZuo] && [self _lookupCardWith:NO andCardType:ZOXXCardTypeDaZuo]) {
+        // 3.寻找有没有兵器牌，，
+        if ((card = [self _laodaLookupCardType:ZOXXCardTypeBingQi])) {
+            [self _laodaUserCard:card andWanjia:NO andNeedRespond:YES];
             return;
         }
         
-        //3.寻找有没有兵器牌，
-        if ([self _lookupCardWith:NO andCardType:ZOXXCardTypeBingQi]) {
+        //4.寻找有木有服饰牌，，
+        if ((card = [self _laodaLookupCardType:ZOXXCardTypeFuShi])) {
+            [self _laodaUserCard:card andWanjia:NO andNeedRespond:YES];
             return;
         }
         
-        //4.寻找有木有服饰牌，
-        if ([self _lookupCardWith:NO andCardType:ZOXXCardTypeFuShi]) {
+        //5.寻找有没有普攻，，
+        if ((card = [self _laodaLookupCardType:ZOXXCardTypePingA])) {
+            [self _laodaUserCard:card andWanjia:NO andNeedRespond:YES];
             return;
         }
         
-        //5.寻找有没有破防牌，
-        if ([self.wanjia hasBingQi] || [self.wanjia hasFuShi]) {
-            if ([self _lookupCardWith:NO andCardType:ZOXXCardTypePoFang]) {
-                return;
-            }
-        }
-        
-        //6.寻找有没有令牌牌，
-        if ([self _lookupCardWith:NO andCardType:ZOXXCardTypeLingpai]) {
+        //6.寻找有没有技能，
+        if ((card = [self _laodaLookupCardType:ZOXXCardTypeJiNeng]) && self.laoda.neili > 0) {
+            [self _laodaUserCard:card andWanjia:NO andNeedRespond:YES];
             return;
         }
         
-        //7.寻找有没有吸气牌，
-        if (![self.laoda isFullBlood] && [self _lookupCardWith:NO andCardType:ZOXXCardTypeXiQi]) {
-            return;
-        }
         
-        //8.寻找有没有合适的攻击技能，（忽略）
-        
-        //9.寻找有没有拳攻或兵攻牌，有的话就寻找有没有加力牌
-        if ([self _lookupCardWithNoUse:NO andCardType:ZOXXCardTypeBingGong] ||
-            [self _lookupCardWithNoUse:NO andCardType:ZOXXCardTypeQuanGong]) {
-            if ([self _lookupCardWith:NO andCardType:ZOXXCardTypeJiaLi]) {
-                return;
-            }
-        }
-        
-        if (!self.laoda.cangongji && [self.laoda hasBingQi] && [self _lookupCardWith:NO andCardType:ZOXXCardTypeBingGong]) {
-            return;
-        }
-        
-        if (!self.laoda.cangongji && [self _lookupCardWith:NO andCardType:ZOXXCardTypeQuanGong]) {
-            return;
-        }
+        //已经过了出牌阶段
+        self.isMyTurn = YES;
+        [self enterDrawCardWithNum:2 complish:^{
+            
+        }];
     }
 }
 
 - (void)enterResponseState:(ZOXXCardType)cardType{
-    if (self.isMyTurn) {
-        
+    [self _jihuoWanJiaShouPai];
+    _noUseBtn.userInteractionEnabled = YES;
+    ZOXXPlayer *player = nil;
+    if ([self inMyTurn]) {
+        player = self.wanjia;
     }else{
-        switch (cardType) {
-            case ZOXXCardTypeMiaoShou:
-            {
-                if (self.wanjia.shoupaiArray.count == 0) {
-                    //流程1
-                    //摸出两张牌
-                    [self enterDrawCardWithNum:2 complish:^{
-                        [self enterUseCard];
-                    }];
-                }else{
-                    //流程2
-                    //从对手手中拿取一张card牌加入自己手中
-                    int selectedIndex = arc4random() % self.wanjia.shoupaiArray.count;
-                    ZOXXCard *card = self.wanjia.shoupaiArray[selectedIndex];
-                    //动画执行
-                    ZOXXCard *lastCard = self.laoda.shoupaiArray.lastObject;
-                    CGPoint targetP = CGPointMake(lastCard.position.x + 210, lastCard.position.y-300);
-                    CGPoint point = [card.parent convertPoint:targetP fromNode:lastCard.parent];
-                    [card runAction:[SKAction moveTo:point duration:1] completion:^{
-                        
-                        //移除
-                        [self.wanjia.shoupaiArray removeObject:card];
-                        [card removeFromParent];
-                        [self.laoda.shoupaiArray addObject:card];
-                        [self->_laodashoupaiNode addChild:card];
-                        card.anchorPoint = CGPointMake(0, 1);
-                        card.position = CGPointMake(card.position.x, 0);
-                        
-                        [self _layoutCardWith:YES complish:^{
-                            [self enterUseCard];
-                        }];
-                    }];
+        player = self.laoda;
+    }
+    switch (cardType) {
+        case ZOXXCardTypeMingXiang:
+        {
+            player.neili += 1;
+            [self _huiLan:player];
+            [self enterUseCard];
+        }
+            break;
+        case ZOXXCardTypeBingQi:
+        {
+            player.gongji += 1;
+            [self _jiagongji:player];
+            [self enterUseCard];
+            
+        }
+            break;
+        case ZOXXCardTypeFuShi:
+        {
+            player.fangyu += 1;
+            [self _jiafangyu:player];
+            [self enterUseCard];
+        }
+            break;
+        case ZOXXCardTypePingA:
+        {
+            //进入对方流程
+            if (![self inMyTurn]) {
+                for (ZOXXCard *ocard in self.wanjia.shoupaiArray) {
+                    if (ocard.cardData.type == ZOXXCardTypeGeDang ||
+                        ocard.cardData.type == ZOXXCardTypeShanBi) {
+                        ocard.userInteractionEnabled = YES;
+                    }else{
+                        ocard.userInteractionEnabled = NO;
+                    }
                 }
-            }
-                break;
-            case ZOXXCardTypeDaZuo:
-            {
-                self.useDaZuo += 1;
-                self.laoda.neili += 1;
-                [self enterUseCard];
-            }
-                break;
-            case ZOXXCardTypeBingQi:
-            {
-                //检查自身是否有兵器
-                if ([self.laoda hasBingQi]) {
-                    //摸一张牌
-                    NSLog(@"摸一张牌");
-                    [self enterDrawCardWithNum:1 complish:^{
-                        [self enterUseCard];
-                    }];
-                }else{
-                    //装备兵器
-                    [self enterUseCard];
+                //对方行动
+                _noUseBtn.userInteractionEnabled = YES;
+            }else{
+                if (self.wanjia.gongji > self.laoda.fangyu) {
+                    ZOXXCard * card = [self _laodaLookupCardType:ZOXXCardTypeGeDang];
+                    if (card) {
+                        [self _laodaUserCard:card andWanjia:YES andNeedRespond:NO];
+                        break;
+                    }
+                    card = [self _laodaLookupCardType:ZOXXCardTypeShanBi];
+                    if (card) {
+                        [self _laodaUserCard:card andWanjia:YES andNeedRespond:NO];
+                        break;
+                    }
                 }
+                //没有牌可用
+                [self enterJieSuanState:cardType isUseCard:NO];
             }
-                break;
-            case ZOXXCardTypeFuShi:
-            {
-                //检查自身是否有服饰
-                if ([self.laoda hasFuShi]) {
-                    //摸一张牌
-                    NSLog(@"摸一张牌");
-                    [self enterDrawCardWithNum:1 complish:^{
-                        [self enterUseCard];
-                    }];
-                }else{
-                    //装备服饰
-                    [self enterUseCard];
-                }
-            }
-                break;
-            case ZOXXCardTypePoFang:
-            {
-                if ([self.wanjia hasBingQi]) {
-                    //弃置武器
-                    [self enterUseCard];
-                    break;
-                }
-                if ([self.wanjia hasFuShi]) {
-                    //弃置防具
-                    [self enterUseCard];
-                    break;
-                }
-            }
-                break;
-            case ZOXXCardTypeLingpai:
-            {
-                //等待玩家出牌，开放玩家响应阶段
-                [self _openWanjiaAction];
-            }
-                break;
-            case ZOXXCardTypeXiQi:
-            {
+        }
+            break;
+        case ZOXXCardTypeJiNeng:
+        {
+            //进入对方流程
+            if (![self inMyTurn]) {
                 self.laoda.neili -= 1;
-                self.laoda.shengming += 1;
+                [self _huiLan:self.laoda];
+                
+                for (ZOXXCard *ocard in self.wanjia.shoupaiArray) {
+                    if (ocard.cardData.type == ZOXXCardTypeShanBi) {
+                        ocard.userInteractionEnabled = YES;
+                    }else{
+                        ocard.userInteractionEnabled = NO;
+                    }
+                }
+                //对方行动
+                _noUseBtn.userInteractionEnabled = YES;
+            }else{
+                self.wanjia.neili -= 1;
+                [self _huiLan:self.wanjia];
+                
+                if (self.wanjia.gongji > self.laoda.fangyu) {
+                    ZOXXCard * card = [self _laodaLookupCardType:ZOXXCardTypeShanBi];
+                    if (card) {
+                        [self _laodaUserCard:card andWanjia:YES andNeedRespond:NO];
+                        break;
+                    }
+                }
+                //没有牌可用
+                [self enterJieSuanState:cardType isUseCard:NO];
+            }
+        }
+            break;
+        default:
+            break;
+    }
+    
+}
+
+- (void)enterJieSuanState:(ZOXXCardType)cardType isUseCard:(BOOL)use{
+    ZOXXPlayer * player = nil;
+    if ([self inMyTurn]) {
+        player = self.laoda;
+    }else{
+        player = self.wanjia;
+    }
+    switch (cardType) {
+        case ZOXXCardTypePingA:
+        {
+            if (!use) {
+                BOOL flag = NO;
+                if ([self inMyTurn]) {
+                    if (self.wanjia.gongji > self.laoda.fangyu) {
+                        self.laoda.shengming -= (self.wanjia.gongji - self.laoda.fangyu);
+                        self.laoda.shengming = self.laoda.shengming > 0 ? self.laoda.shengming : 0;
+                        [self _kouxue:self.laoda];
+                        flag = YES;
+                    }
+                }else{
+                    if (self.laoda.gongji > self.wanjia.fangyu) {
+                        self.wanjia.shengming -= (self.laoda.gongji - self.wanjia.fangyu);
+                        self.wanjia.shengming = self.wanjia.shengming > 0 ? self.wanjia.shengming : 0;
+                        [self _kouxue:self.wanjia];
+                        flag = YES;
+                    }
+                }
+                if (flag) {
+                    SKAction *action;
+                    if (player == self.wanjia) {
+                        action = [SKAction actionNamed:@"WanJiaHeadImageAction"];
+                    }else{
+                        action = [SKAction actionNamed:@"LaoDaHeadImageAction"];
+                    }
+                    [player.headerImageNode runAction:action];
+                }
+            }
+            if (self.wanjia.shengming == 0 || self.laoda.shengming == 0) {
+                break;
+            }
+            [self enterUseCard];
+        }
+            break;
+        case ZOXXCardTypeJiNeng:
+        {
+            if (!use) {
+                BOOL flag = NO;
+                if ([self inMyTurn]) {
+                    if (self.wanjia.gongji > self.laoda.fangyu) {
+                        self.laoda.shengming -= (self.wanjia.gongji - self.laoda.fangyu);
+                        self.laoda.shengming = self.laoda.shengming > 0 ? self.laoda.shengming : 0;
+                        [self _kouxue:self.laoda];
+                        flag = YES;
+                    }
+                }else{
+                    if (self.laoda.gongji > self.wanjia.fangyu) {
+                        self.wanjia.shengming -= (self.laoda.gongji - self.wanjia.fangyu);
+                        self.wanjia.shengming = self.wanjia.shengming > 0 ? self.wanjia.shengming : 0;
+                        [self _kouxue:self.wanjia];
+                        flag = YES;
+                    }
+                }
+                if (flag) {
+                    SKAction *action;
+                    if (player == self.wanjia) {
+                        action = [SKAction actionNamed:@"WanJiaHeadImageAction"];
+                    }else{
+                        action = [SKAction actionNamed:@"LaoDaHeadImageAction"];
+                    }
+                    [player.headerImageNode runAction:action];
+                }
+            }
+            if (self.wanjia.shengming == 0 || self.laoda.shengming == 0) {
+                break;
+            }
+            [self enterUseCard];
+        }
+            break;
+        default:
+            break;
+    }
+    NSLog(@"现在%@生命 -- %d",player.name,player.shengming);
+    if (self.wanjia.shengming == 0) {
+        if (self.endGame) {
+            self.endGame();
+            [ZOXXSaveData sharedPlayer].diyiciwan = NO;
+            [ZOXXSaveData baocunwanjiashuju:[ZOXXSaveData sharedPlayer]];
+        }
+        [ZOXXLogPlayer write2Caches:@"败给电脑人"];
+        //弹窗提示
+        ZOXXAlertViewController *weic = [[ZOXXAlertViewController alloc] initWithTitle:@"你输了!" andLeftBtnTxt:@"重新开始" andRightBtnTxt:@"返回" andLeftBlock:^{
+            SKView *skView = (SKView *)self.scene.view;
+            ZOXXMainScene *scene = (ZOXXMainScene *)[SKScene nodeWithFileNamed:@"ZOXXMainSceneView"];
+            scene.scaleMode = SKSceneScaleModeFill;
+            [skView presentScene:scene];
+        } andRightBlock:^{
+            GameViewController *rootViewController = (GameViewController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+            ZOXXBeginSceneFirst *scene = (ZOXXBeginSceneFirst *)[SKScene nodeWithFileNamed:@"ZOXXBeginSceneFirst"];
+            scene.bsfd_delegate = rootViewController;
+            scene.scaleMode = SKSceneScaleModeFill;
+            SKView *skView = (SKView *)self.scene.view;
+            SKTransition *tr = [SKTransition moveInWithDirection:SKTransitionDirectionLeft duration:0.25];
+            [skView presentScene:scene transition:tr];
+        }];
+        [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:weic animated:NO completion:nil];
+        return;
+    }
+    if (self.laoda.shengming == 0) {
+        if (self.endGame) {
+            self.endGame();
+            [ZOXXSaveData sharedPlayer].diyiciwan = NO;
+            [ZOXXSaveData baocunwanjiashuju:[ZOXXSaveData sharedPlayer]];
+        }
+        [ZOXXSaveData sharedPlayer].money += 10;
+        [ZOXXSaveData baocunwanjiashuju:[ZOXXSaveData sharedPlayer]];
+        //弹窗提示
+        [ZOXXLogPlayer write2Caches:@"赢了电脑人,金币+10"];
+        ZOXXAlertViewController *weic = [[ZOXXAlertViewController alloc] initWithTitle:@"你赢了!\n金币 +10" andLeftBtnTxt:@"选择关卡" andRightBtnTxt:@"返回" andLeftBlock:^{
+            SKView *skView = (SKView *)self.scene.view;
+            ZOXXSelectLevelScene *scene = (ZOXXSelectLevelScene *)[SKScene nodeWithFileNamed:@"ZOXXSelectLevelScene"];
+            scene.scaleMode = SKSceneScaleModeFill;
+            [skView presentScene:scene];
+        } andRightBlock:^{
+            GameViewController *rootViewController = (GameViewController *)[UIApplication sharedApplication].delegate.window.rootViewController;
+            ZOXXBeginSceneFirst *scene = (ZOXXBeginSceneFirst *)[SKScene nodeWithFileNamed:@"ZOXXBeginSceneFirst"];
+            scene.bsfd_delegate = rootViewController;
+            scene.scaleMode = SKSceneScaleModeFill;
+            SKView *skView = (SKView *)self.scene.view;
+            SKTransition *tr = [SKTransition moveInWithDirection:SKTransitionDirectionLeft duration:0.25];
+            [skView presentScene:scene transition:tr];
+        }];
+        [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:weic animated:NO completion:nil];
+    }
+}
+
+- (void)showDesktop{
+    _useCardShowNode.hidden = NO;
+}
+
+#pragma mark - ZOXXSpriteButtonDelegate
+- (void)ZOXXSpriteButtonClick:(ZOXXSpriteButton *)btn{
+    if (btn == _noUseBtn) {
+        
+        for (ZOXXCard *obj in self.wanjia.shoupaiArray) {
+           obj.isSelected = NO;
+        }
+        
+        if (!self.isMyTurn) {
+            [self enterJieSuanState:_currentLaoDaUseCard.cardData.type isUseCard:NO];
+        }else{
+            self.isMyTurn = NO;
+            for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+                card.userInteractionEnabled = NO;
+            }
+            [self enterDrawCardWithNum:2 complish:^{
                 [self enterUseCard];
-            }
-                break;
-            case ZOXXCardTypeJiaLi:
-            {
-                self.laoda.jiali = YES;
-                [self enterUseCard];
-            }
-                break;
-            case ZOXXCardTypeBingGong:
-            {
-                //等待玩家出牌，开放玩家响应阶段
-                [self _openWanjiaAction:cardType];
-            }
-                break;
-            case ZOXXCardTypeQuanGong:
-            {
-                //等待玩家出牌，开放玩家响应阶段
-                [self _openWanjiaAction];
-            }
-                break;
-            default:
-                break;
+            }];
         }
     }
+    if (btn == _useBtn) {
+        
+        for (ZOXXCard *obj in self.wanjia.shoupaiArray) {
+            obj.userInteractionEnabled = NO;
+        }
+        
+        if (!self.isMyTurn) {
+            //一个使用的动画
+            [self _useCard:_currentUseCard andNeedRespond:NO];
+        }else{
+            [self _useCard:_currentUseCard andNeedRespond:YES];
+        }
+    }
+}
+
+#pragma mark - ZOXXCardDelegate
+- (void)ZOXXCardClick:(ZOXXCard *)card{
+    
+    for (ZOXXCard *obj in self.wanjia.shoupaiArray) {
+        if (obj != card) {
+            obj.isSelected = NO;
+        }
+    }
+    
+    if (!self.isMyTurn) {
+        _currentUseCard = card;
+        if ([self.wanjia canSelectedCard] && card.isSelected) {
+            _useBtn.userInteractionEnabled = YES;
+        }else{
+            _useBtn.userInteractionEnabled = NO;
+        }
+    }else{
+        _currentUseCard = nil;
+        if (card.isSelected) {
+            _currentUseCard = card;
+        }
+        _useBtn.userInteractionEnabled = _currentUseCard ? YES : NO;
+    }
+    
 }
 
 #pragma mark - private game methods
 - (NSArray *)_cardTypeArray{
     return @[
-        [NSNumber numberWithInteger:ZOXXCardTypeQuanGong],
-        [NSNumber numberWithInteger:ZOXXCardTypeBingGong],
-        [NSNumber numberWithInteger:ZOXXCardTypeDuoShan],
-        [NSNumber numberWithInteger:ZOXXCardTypeZhaoJia],
-        [NSNumber numberWithInteger:ZOXXCardTypeDaZuo],
-        [NSNumber numberWithInteger:ZOXXCardTypeXiQi],
-        [NSNumber numberWithInteger:ZOXXCardTypeJiaLi],
-        [NSNumber numberWithInteger:ZOXXCardTypeLingpai],
+        [NSNumber numberWithInteger:ZOXXCardTypePingA],
+        [NSNumber numberWithInteger:ZOXXCardTypePingA],
+        [NSNumber numberWithInteger:ZOXXCardTypePingA],
+        [NSNumber numberWithInteger:ZOXXCardTypeJiNeng],
+        [NSNumber numberWithInteger:ZOXXCardTypeShanBi],
+        [NSNumber numberWithInteger:ZOXXCardTypeGeDang],
+        [NSNumber numberWithInteger:ZOXXCardTypeMingXiang],
         [NSNumber numberWithInteger:ZOXXCardTypeBingQi],
-        [NSNumber numberWithInteger:ZOXXCardTypeFuShi],
-        [NSNumber numberWithInteger:ZOXXCardTypeMiaoShou],
-        [NSNumber numberWithInteger:ZOXXCardTypePoFang],
-        [NSNumber numberWithInteger:ZOXXCardTypeDianXue],
+        [NSNumber numberWithInteger:ZOXXCardTypeFuShi]
     ];
 }
 
@@ -426,71 +726,215 @@
     return cardData;
 }
 
-- (void)_layoutCardWith:(BOOL)wanjia complish:(void (^)(void))finishedBlock{
+- (void)_layoutCardWithWanJia:(BOOL)wanjia completion:(void (^)(void))finishedBlock{
     NSArray *array = self.laoda.shoupaiArray;
+    SKNode *node = _laodashoupaiNode;
     if (wanjia) {
         array = self.wanjia.shoupaiArray;
+        node = _wanjiashoupaiNode;
+    }
+
+    CGFloat screenWidth = self.scene.size.width;
+    CGFloat space = [node.parent convertPoint:node.position fromNode:self.scene].x;
+    space += screenWidth/2;
+    CGFloat realWidth = array.count * (CardSize.width + 5) - 5;
+    CGFloat maxX = screenWidth - 2 * space;
+    if (realWidth > maxX) {
+        NSLog(@"出去了");
+        //重新排序
+        for (int i = 0; i < array.count; i ++) {
+            ZOXXCard *card = array[i];
+            if (i == 0) {
+                [card runAction:[SKAction moveToX:(maxX/array.count)* i duration:0.5]];
+            }else{
+                [card runAction:[SKAction moveToX:((maxX/array.count)* i - (CardSize.width - maxX/array.count)) duration:0.5]];
+            }
+        }
+    }else{
+        NSLog(@"在里面了");
+        for (int i = 0; i < array.count; i ++) {
+            ZOXXCard *card = array[i];
+            [card runAction:[SKAction moveToX:(CardSize.width + 5)* i duration:0.5]];
+        }
     }
     
-    for (int i = 0; i < array.count; i ++) {
-        ZOXXCard *card = array[i];
-        [card runAction:[SKAction moveToX:210 * i duration:1]];
-    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        if (self.isMyTurn) {
+            [self _jihuoWanJiaShouPai];
+        }
+        
+        if ([ZOXXSaveData sharedPlayer].diyiciwan) {
+            [((ZOXXMainScene *)self.scene) show1];
+        }
+        for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+            card.origin = card.position;
+        }
+        for (ZOXXCard *card in self.laoda.shoupaiArray) {
+            card.origin = card.position;
+        }
         if (finishedBlock) {
             finishedBlock();
         }
     });
 }
 
-- (BOOL)_lookupCardWith:(BOOL)wanjia andCardType:(ZOXXCardType)cardType{
-    NSArray *array = self.laoda.shoupaiArray;
-    if (wanjia) {
-        array = self.wanjia.shoupaiArray;
-    }
-    
-    BOOL flag = NO;
-    for (int i = 0; i < array.count; i ++) {
-        ZOXXCard *card = array[i];
-        if (card.cardData.type == cardType) {
-            flag = YES;
-            //执行动画
-            CGPoint point = [card.parent convertPoint:_useCardShowNode.position fromNode:_useCardShowNode.parent];
-            point.x -= 100;
-            point.y += 150;
-            [card runAction:[SKAction moveTo:point duration:1] completion:^{
-                //把内容交给当前节点
-                ZOXXCard *cardShow = (ZOXXCard *)[self->_useCardShowNode.children firstObject];
-                cardShow.cardData = card.cardData;
-                NSLog(@"%@",cardShow.cardData.descriptionString);
-                
-                //移除节点
-                [card removeFromParent];
-                if (wanjia) {
-                    [self.wanjia.shoupaiArray removeObject:card];
-                }else{
-                    [self.laoda.shoupaiArray removeObject:card];
-                }
-
-                //调用重新布局方法
-                [self _layoutCardWith:wanjia complish:^{
-                    //调用响应阶段
-                    [self enterResponseState:card.cardData.type];
-                }];
-            }];
-            break;
+- (void)_jihuoWanJiaShouPai{
+    if ([self inMyTurn]) {
+        for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+            if (card.cardData.type == ZOXXCardTypeGeDang ||
+                card.cardData.type == ZOXXCardTypeShanBi ||
+                (card.cardData.type == ZOXXCardTypeJiNeng && self.wanjia.neili == 0) ||
+                (card.cardData.type == ZOXXCardTypeMingXiang && self.wanjia.neili == self.wanjia.neilishangxian)) {
+                card.userInteractionEnabled = NO;
+                continue;
+            }
+            card.userInteractionEnabled = YES;
+        }
+    }else{
+        for (ZOXXCard *card in self.wanjia.shoupaiArray) {
+            card.userInteractionEnabled = NO;
         }
     }
-    return flag;
 }
 
-- (BOOL)_needLookUpDaZuo{
-    if (self.useDaZuo < 2) {
-        return YES;
+- (void)_useCard:(ZOXXCard *)card andNeedRespond:(BOOL)needRespond{
+    _useBtn.userInteractionEnabled = NO;
+    _noUseBtn.userInteractionEnabled = NO;
+    
+    for (ZOXXCard *obj in self.wanjia.shoupaiArray) {
+        obj.userInteractionEnabled = NO;
     }
-    return NO;
+    
+    //执行动画
+    CGPoint point = [card.parent convertPoint:_useCardShowNode.position fromNode:_useCardShowNode.parent];
+    point.x -= CardSize.width/2;
+    point.y -= CardSize.height/2;
+    [card runAction:[SKAction moveTo:point duration:0.5] completion:^{
+        //把内容交给当前节点
+        ZOXXCard *cardShow = (ZOXXCard *)[self->_useCardShowNode.children firstObject];
+        cardShow.cardData = card.cardData;
+        NSLog(@"%@",cardShow.cardData.descriptionString);
+        
+        //移除节点
+        [card removeFromParent];
+        [self.wanjia.shoupaiArray removeObject:card];
+        
+        //调用重新布局方法
+        [self _layoutCardWithWanJia:YES completion:^{
+            if (needRespond) {
+                //调用响应阶段
+                [self enterResponseState:card.cardData.type];
+            }else{
+                [self enterUseCard];
+            }
+        }];
+    }];
 }
+
+- (void)_kouxue:(ZOXXPlayer *)player{
+    if (player == self.laoda) {
+        CGFloat s = self.laoda.shengming * 1.0 / self.laoda.shengmingshangxian;
+        CGFloat width = _LaoDaXueTiaoBG.size.width / _LaoDaXueTiaoBG.xScale * s;
+        [_LaoDaXueTiao runAction:[SKAction resizeToWidth:width duration:0.25]];
+        
+//        _LaoDaXueTiao.size = CGSizeMake(width, _LaoDaXueTiaoBG.size.height);
+        _LaoDaXueTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.laoda.shengming,self.laoda.shengmingshangxian];
+        [_LaoDaXueTiaoNum runAction:[SKAction actionNamed:@"TextEffectScale"]];
+        
+    }else{
+        CGFloat s = self.wanjia.shengming * 1.0 / self.wanjia.shengmingshangxian;
+        CGFloat width = _WanJiaXueTiaoBG.size.width / _WanJiaXueTiaoBG.xScale * s;
+        [_WanJiaXueTiao runAction:[SKAction resizeToWidth:width duration:0.25]];
+
+//        _WanJiaXueTiao.size = CGSizeMake(width, _WanJiaXueTiaoBG.size.height);
+        _WanJiaXueTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.wanjia.shengming,self.wanjia.shengmingshangxian];
+        [_WanJiaXueTiaoNum runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }
+}
+
+- (void)_huiLan:(ZOXXPlayer *)player{
+    if (player == self.laoda) {
+        CGFloat s = self.laoda.neili * 1.0 / self.laoda.neilishangxian;
+        CGFloat width = _LaoDaLanTiaoBG.size.width * s;
+        [_LaoDaLanTiao runAction:[SKAction resizeToWidth:width duration:0.25]];
+//        _LaoDaLanTiao.size = CGSizeMake(width, _LaoDaLanTiaoBG.size.height);
+        
+        _LaoDaLanTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.laoda.neili,self.laoda.neilishangxian];
+        [_LaoDaLanTiaoNum runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }else{
+        CGFloat s = self.wanjia.neili * 1.0 / self.wanjia.neilishangxian;
+        CGFloat width = _WanJiaLanTiaoBG.size.width * s;
+        [_WanJiaLanTiao runAction:[SKAction resizeToWidth:width duration:0.25]];
+//        _WanJiaLanTiao.size = CGSizeMake(width, _WanJiaLanTiaoBG.size.height);
+        _WanJiaLanTiaoNum.text = [NSString stringWithFormat:@"%ld/%ld",self.wanjia.neili,self.wanjia.neilishangxian];
+        [_WanJiaLanTiaoNum runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }
+}
+
+- (void)_jiagongji:(ZOXXPlayer *)player{
+    if (player == self.laoda) {
+        _LaoDaGongJi.text = [NSString stringWithFormat:@"%ld",self.laoda.gongji];
+        [_LaoDaGongJi runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }else{
+        _WanJiaGongJi.text = [NSString stringWithFormat:@"%ld",self.wanjia.gongji];
+        [_WanJiaGongJi runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }
+}
+
+- (void)_jiafangyu:(ZOXXPlayer *)player{
+    if (player == self.laoda) {
+        _LaoDaFangYu.text = [NSString stringWithFormat:@"%ld",self.laoda.fangyu];
+        [_LaoDaFangYu runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }else{
+        _WanJiaFangYu.text = [NSString stringWithFormat:@"%ld",self.wanjia.fangyu];
+        [_WanJiaFangYu runAction:[SKAction actionNamed:@"TextEffectScale"]];
+    }
+}
+
+#pragma mark - 电脑人的行为
+//电脑弟弟找牌行为
+- (ZOXXCard *)_laodaLookupCardType:(ZOXXCardType)cardType{
+    for (ZOXXCard *card in self.laoda.shoupaiArray) {
+        if (card.cardData.type == cardType) {
+            return card;
+        }
+    }
+    return nil;
+}
+
+//用牌行为
+- (void)_laodaUserCard:(ZOXXCard *)card andWanjia:(BOOL)wanjia andNeedRespond:(BOOL)needRespond{
+    //执行动画
+    if (wanjia) {
+        _currentUseCard = card;
+    }else{
+        _currentLaoDaUseCard = card;
+    }
+    
+    CGPoint point = [card.parent convertPoint:_useCardShowNode.position fromNode:_useCardShowNode.parent];
+    point.x -= CardSize.width/2;
+    point.y += CardSize.height/2;
+    [card runAction:[SKAction moveTo:point duration:0.5] completion:^{
+        //把内容交给当前节点
+        ZOXXCard *cardShow = (ZOXXCard *)[self->_useCardShowNode.children firstObject];
+        cardShow.cardData = card.cardData;
+        NSLog(@"%@",cardShow.cardData.descriptionString);
+        
+        //移除节点
+        [card removeFromParent];
+        [self.laoda.shoupaiArray removeObject:card];
+
+        //调用重新布局方法
+        [self _layoutCardWithWanJia:NO completion:^{
+            if (needRespond) {
+                //调用响应阶段
+                [self enterResponseState:card.cardData.type];
+            }
+        }];
+    }];
+}
+
 
 - (BOOL)_lookupCardWithNoUse:(BOOL)wanjia andCardType:(ZOXXCardType)cardType{
     NSArray *array = self.laoda.shoupaiArray;
@@ -507,34 +951,6 @@
         }
     }
     return flag;
-}
-
-- (void)_openWanjiaAction:(ZOXXCardType)cardType{
-    for (ZOXXCard *card in self.wanjia.shoupaiArray) {
-        switch (cardType) {
-            case ZOXXCardTypeLingpai:
-            {
-                if (card.cardData.type == ZOXXCardTypeQuanGong ||
-                    ([self.wanjia hasBingQi] && card.cardData.type == ZOXXCardTypeBingGong)) {
-                    card.userInteractionEnabled = YES;
-                }
-            }
-                break;
-            case ZOXXCardTypeQuanGong:
-            {
-                //加力，我就
-                if (self.wanjia.jiali) {
-                    
-                }else{
-                    
-                }
-            }
-                break;
-            default:
-                break;
-        }
-        card.userInteractionEnabled = YES;
-    }
 }
 
 @end

@@ -19,24 +19,32 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "ZOXXCard.h"
+#import <SpriteKit/SpriteKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, MenPaiAddressType) {
-    /** 玉女峰 */
-    MenPaiAddressTypeYuNvFeng = 0,
-    /** 武当山 */
-    MenPaiAddressTypeWuDangShan = 1,
-    /** 大雪山 */
-    MenPaiAddressTypeDaXueShan = 2,
-    /** 五指山 */
-    MenPaiAddressTypeWuZhiShan = 3,
-    /** 冰火岛*/
-    MenPaiAddressTypeBingHuoDao = 4,
-    /** 商家堡 */
-    MenPaiAddressTypeShangJiaBao = 5,
-    /** 黑森林 */
-    MenPaiAddressTypeHeiSenLin = 6,
+    /** 二次元爱好者 */
+    MenPaiAddressTypeErCiYueAiHaoZhe = 0,
+    /** 仙踪林 */
+    MenPaiAddressTypeXianZongLin = 1,
+    /** 勇者大陆 */
+    MenPaiAddressTypeYongZheDaLu = 2,
+    /** 失落之塔 */
+    MenPaiAddressTypeShiLuoZhiTa = 3,
+    /** 亚特兰蒂斯*/
+    MenPaiAddressTypeYaTeLanDiSi = 4,
+    /** 死亡沙漠 */
+    MenPaiAddressTypeSiWangShaMo = 5,
+    /** 天空之城 */
+    MenPaiAddressTypeTianKongZhiCheng = 6,
+    /** 罗兰峡谷 */
+    MenPaiAddressTypeLuoLanXiaGu = 7,
+    /** 魔炼之地 */
+    MenPaiAddressTypeMoLianZhiDi = 8,
+    /** 幽暗森林 */
+    MenPaiAddressTypeYouAnSenLin = 9,
 };
 
 @interface ZOXXPlayer : NSObject
@@ -45,37 +53,27 @@ typedef NS_ENUM(NSUInteger, MenPaiAddressType) {
 
 @property (nonatomic) NSString * name;
 
-@property (nonatomic) NSString * menpaiName;
-
-@property (nonatomic) NSString * menpaiAddress;
-
-@property (nonatomic) NSArray * jueji;
-
-@property (nonatomic) NSString * menpaiImage;
-
 @property (nonatomic) NSString * headerImage;
+
+@property (nonatomic) NSInteger shengmingshangxian;
+
+@property (nonatomic) NSInteger neilishangxian;
 
 @property (nonatomic) NSInteger shengming;
 
 @property (nonatomic) NSInteger neili;
 
-@property (nonatomic) NSString * bingqi;
+@property (nonatomic) NSInteger gongji;
 
-@property (nonatomic) NSString * fushi;
+@property (nonatomic) NSInteger fangyu;
 
-@property (nonatomic) NSMutableArray * shoupaiArray;
+@property (nonatomic) NSMutableArray<ZOXXCard *> * shoupaiArray;
 
-@property (nonatomic) BOOL jiali;
-
-@property (nonatomic) BOOL cangongji;
+@property (nonatomic) SKSpriteNode *headerImageNode;
 
 + (instancetype)createWithType:(MenPaiAddressType)type;
 
-- (BOOL)hasBingQi;
-
-- (BOOL)hasFuShi;
-
-- (BOOL)isFullBlood;
+- (BOOL)canSelectedCard;
 
 @end
 

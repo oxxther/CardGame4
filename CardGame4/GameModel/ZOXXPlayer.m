@@ -7,6 +7,7 @@
 //
 
 #import "ZOXXPlayer.h"
+#import "ZOXXSaveData.h"
 
 @implementation ZOXXPlayer
 
@@ -17,96 +18,129 @@
 }
 
 #pragma mark - setter
+
 - (void)setType:(MenPaiAddressType)type{
     _type = type;
     
     switch (type) {
-        case MenPaiAddressTypeYuNvFeng:
+        case MenPaiAddressTypeErCiYueAiHaoZhe:
         {
-            self.name = @"李清照";
-            self.menpaiName = @"花间派";
-            self.menpaiAddress = @"玉女峰";
-            self.jueji = @[@"三花",@"落英缤纷",@"柳浪闻莺"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = [ZOXXSaveData sharedPlayer].name;
+            self.shengmingshangxian = [ZOXXSaveData sharedPlayer].shengmingzongzhi;
+            self.neilishangxian = [ZOXXSaveData sharedPlayer].neilizongzhi;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = [ZOXXSaveData sharedPlayer].gongji;
+            self.fangyu = [ZOXXSaveData sharedPlayer].fangyu;
+            self.headerImage = [self getImagePath:@"PlayerHeader0.png"];
         }
             break;
-        case MenPaiAddressTypeWuDangShan:
+        case MenPaiAddressTypeXianZongLin:
         {
-            self.name = @"清虚道长";
-            self.menpaiName = @"太极门";
-            self.menpaiAddress = @"武当山";
-            self.jueji = @[@"挤字诀",@"震字诀",@"三环套月"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = @"科加森";
+            self.shengmingshangxian = 4;
+            self.neilishangxian = 4;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 2;
+            self.fangyu = 1;
+            self.headerImage = [self getImagePath:@"PlayerHeader1.png"];
         }
             break;
-        case MenPaiAddressTypeDaXueShan:
+        case MenPaiAddressTypeYongZheDaLu:
         {
-            self.name = @"白瑞德";
-            self.menpaiName = @"雪山剑派";
-            self.menpaiAddress = @"大雪山";
-            self.jueji = @[@"冰心诀",@"神倒鬼跌",@"雪花六出"];
-            self.menpaiImage = [self getImagePath:@"renWu03.png"];
-            self.headerImage = [self getImagePath:@"touXiang03.png"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = @"卡尔玛";
+            self.shengmingshangxian = 5;
+            self.neilishangxian = 5;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 2;
+            self.fangyu = 1;
+            self.headerImage = [self getImagePath:@"PlayerHeader2.png"];
         }
             break;
-        case MenPaiAddressTypeWuZhiShan:
+        case MenPaiAddressTypeShiLuoZhiTa:
         {
-            self.name = @"余鸿儒";
-            self.menpaiName = @"红莲教";
-            self.menpaiAddress = @"五指山";
-            self.jueji = @[@"普天同济",@"红莲教义",@"流星飞掷"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = @"凯特琳";
+            self.shengmingshangxian = 6;
+            self.neilishangxian = 6;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 3;
+            self.fangyu = 2;
+            self.headerImage = [self getImagePath:@"PlayerHeader3.png"];
         }
             break;
-        case MenPaiAddressTypeBingHuoDao:
+        case MenPaiAddressTypeYaTeLanDiSi:
         {
-            self.name = @"和仲阳";
-            self.menpaiName = @"伊贺派";
-            self.menpaiAddress = @"冰火岛";
-            self.jueji = @[@"忍法隐分身",@"忍术烟幕",@"迎风一刀斩",@"旋风三连斩"];
-            self.menpaiImage = [self getImagePath:@"renWu05.png"];
-            self.headerImage = [self getImagePath:@"touXiang05.png"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = @"辛吉德";
+            self.shengmingshangxian = 7;
+            self.neilishangxian = 7;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 4;
+            self.fangyu = 3;
+            self.headerImage = [self getImagePath:@"PlayerHeader4.png"];
         }
             break;
-        case MenPaiAddressTypeShangJiaBao:
+        case MenPaiAddressTypeSiWangShaMo:
         {
-            self.name = @"王维扬";
-            self.menpaiName = @"八卦门";
-            self.menpaiAddress = @"商家堡";
-            self.jueji = @[@"化掌为刀",@"八卦刀影掌",@"八阵刀影掌"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.name = @"德鲁伊";
+            self.shengmingshangxian = 8;
+            self.neilishangxian = 8;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 5;
+            self.fangyu = 4;
+            self.headerImage = [self getImagePath:@"PlayerHeader5.png"];
         }
             break;
-        case MenPaiAddressTypeHeiSenLin:
+        case MenPaiAddressTypeTianKongZhiCheng:
         {
             self.name = @"娜可露露";
-            self.menpaiName = @"兽王派";
-            self.menpaiAddress = @"黑森林";
-            self.jueji = @[@"变熊术",@"飞鹰召唤",@"变鹰术",@"恶虎啸"];
-            self.shengming = 4;
-            self.neili = 4;
-            self.bingqi = @"无";
-            self.fushi = @"布衣";
+            self.shengmingshangxian = 9;
+            self.neilishangxian = 9;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 6;
+            self.fangyu = 5;
+            self.headerImage = [self getImagePath:@"PlayerHeader6.png"];
+        }
+            break;
+        case MenPaiAddressTypeLuoLanXiaGu:
+        {
+            self.name = @"罗兰度";
+            self.shengmingshangxian = 10;
+            self.neilishangxian = 10;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 7;
+            self.fangyu = 6;
+            self.headerImage = [self getImagePath:@"PlayerHeader7.png"];
+        }
+            break;
+        case MenPaiAddressTypeMoLianZhiDi:
+        {
+            self.name = @"魔神卡迪姆";
+            self.shengmingshangxian = 50;
+            self.neilishangxian = 50;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 25;
+            self.fangyu = 25;
+            self.headerImage = [self getImagePath:@"PlayerHeader8.png"];
+        }
+            break;
+        case MenPaiAddressTypeYouAnSenLin:
+        {
+            self.name = @"世界神爱豆";
+            self.shengmingshangxian = 50;
+            self.neilishangxian = 50;
+            self.shengming = self.shengmingshangxian;
+            self.neili = 0;
+            self.gongji = 25;
+            self.fangyu = 25;
+            self.headerImage = [self getImagePath:@"PlayerHeader9.png"];
         }
             break;
         default:
@@ -114,16 +148,15 @@
     }
 }
 
-- (BOOL)hasBingQi{
-    return YES;
-}
-
-- (BOOL)hasFuShi{
-    return YES;
-}
-
-- (BOOL)isFullBlood{
-    return NO;
+- (BOOL)canSelectedCard{
+    BOOL flag = NO;
+    for (ZOXXCard *card in self.shoupaiArray) {
+        if (card.userInteractionEnabled) {
+            flag = YES;
+            break;
+        }
+    }
+    return flag ;
 }
 
 #pragma mark - private

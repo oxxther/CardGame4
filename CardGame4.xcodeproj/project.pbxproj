@@ -7,34 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220CDAD6244710BD00548E9B /* ZOXXGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */; };
 		220CDADD2447FA7D00548E9B /* ZOXXCardData.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDADC2447FA7D00548E9B /* ZOXXCardData.m */; };
 		220CDAE0244804E200548E9B /* ZOXXPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDADF244804E200548E9B /* ZOXXPlayer.m */; };
 		220CDAE424480A3600548E9B /* ZOXXCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAE324480A3600548E9B /* ZOXXCard.m */; };
-		220CDAE924482B2F00548E9B /* renWu05.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAE724482B2F00548E9B /* renWu05.png */; };
-		220CDAEA24482B2F00548E9B /* renWu03.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAE824482B2F00548E9B /* renWu03.png */; };
-		220CDAED24482DF400548E9B /* touXiang03.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAEB24482DF400548E9B /* touXiang03.png */; };
-		220CDAEE24482DF400548E9B /* touXiang05.png in Resources */ = {isa = PBXBuildFile; fileRef = 220CDAEC24482DF400548E9B /* touXiang05.png */; };
 		220CDAF1244833CC00548E9B /* ZOXXGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 220CDAF0244833CC00548E9B /* ZOXXGameManager.m */; };
-		22FCCFEB24458CCD008FE3B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */; };
+		224888E62454144A0011881B /* ZOXXSpriteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888E42454144A0011881B /* ZOXXSpriteButton.m */; };
+		224888EC245414590011881B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888E9245414590011881B /* GameViewController.m */; };
+		224888ED245414590011881B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888EA245414590011881B /* AppDelegate.m */; };
+		224888F12454149E0011881B /* ZOXXAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888EF2454149E0011881B /* ZOXXAlertViewController.m */; };
+		224888F22454149E0011881B /* ZOXXAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224888F02454149E0011881B /* ZOXXAlertViewController.xib */; };
+		224888F7245414B20011881B /* ZOXXSelectLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888F5245414B20011881B /* ZOXXSelectLevelScene.m */; };
+		224888F8245414B20011881B /* ZOXXSelectLevelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 224888F6245414B20011881B /* ZOXXSelectLevelScene.sks */; };
+		224888FD245414C70011881B /* ZOXXWanJiaDangAn.m in Sources */ = {isa = PBXBuildFile; fileRef = 224888FB245414C70011881B /* ZOXXWanJiaDangAn.m */; };
+		224888FE245414C70011881B /* ZOXXWanJiaDangAn.sks in Resources */ = {isa = PBXBuildFile; fileRef = 224888FC245414C70011881B /* ZOXXWanJiaDangAn.sks */; };
+		22488905245414D70011881B /* ZOXXGuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22488902245414D70011881B /* ZOXXGuideViewController.xib */; };
+		22488906245414D70011881B /* ZOXXGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22488903245414D70011881B /* ZOXXGuideViewController.m */; };
+		22488907245414D70011881B /* ZOXXTran.m in Sources */ = {isa = PBXBuildFile; fileRef = 22488904245414D70011881B /* ZOXXTran.m */; };
+		2248890A245414E60011881B /* ZOXXSaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 22488909245414E50011881B /* ZOXXSaveData.m */; };
+		2248890F245414F20011881B /* ZOXXShopStore.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2248890D245414F20011881B /* ZOXXShopStore.sks */; };
+		22488910245414F20011881B /* ZOXXShopStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2248890E245414F20011881B /* ZOXXShopStore.m */; };
+		224889242454150E0011881B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889122454150E0011881B /* Reachability.m */; };
+		224889252454150E0011881B /* ZOXXImproveRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889132454150E0011881B /* ZOXXImproveRun.m */; };
+		224889272454150E0011881B /* ZOXXJiaMi.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889152454150E0011881B /* ZOXXJiaMi.m */; };
+		224889282454150E0011881B /* ZOXXLogPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889162454150E0011881B /* ZOXXLogPlayer.m */; };
+		224889292454150E0011881B /* ZOXXGennalTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889172454150E0011881B /* ZOXXGennalTool.m */; };
+		2248892A2454150E0011881B /* UIImage+ZOXXSave2Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889182454150E0011881B /* UIImage+ZOXXSave2Photo.m */; };
+		2248892B2454150E0011881B /* ZOXXGameTiYanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889212454150E0011881B /* ZOXXGameTiYanViewController.m */; };
+		2248892C2454150E0011881B /* NSString+ZOXXOffset.m in Sources */ = {isa = PBXBuildFile; fileRef = 224889222454150E0011881B /* NSString+ZOXXOffset.m */; };
 		22FCCFED24458CCD008FE3B9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFEC24458CCD008FE3B9 /* GameScene.sks */; };
 		22FCCFEF24458CCD008FE3B9 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFEE24458CCD008FE3B9 /* Actions.sks */; };
 		22FCCFF224458CCD008FE3B9 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFF124458CCD008FE3B9 /* GameScene.m */; };
-		22FCCFF524458CCD008FE3B9 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFF424458CCD008FE3B9 /* GameViewController.m */; };
 		22FCCFF824458CCD008FE3B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFF624458CCD008FE3B9 /* Main.storyboard */; };
 		22FCCFFA24458CCE008FE3B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFF924458CCE008FE3B9 /* Assets.xcassets */; };
 		22FCCFFD24458CCE008FE3B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22FCCFFB24458CCE008FE3B9 /* LaunchScreen.storyboard */; };
 		22FCD00024458CCE008FE3B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCCFFF24458CCE008FE3B9 /* main.m */; };
 		22FCD00924458D7B008FE3B9 /* ZOXXBeginSceneFirst.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD00824458D7B008FE3B9 /* ZOXXBeginSceneFirst.m */; };
 		22FCD00B24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCD00A24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks */; };
-		22FCD0182445AFCD008FE3B9 /* ZOXXAlertViewControll.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */; };
 		22FCD01F2445B900008FE3B9 /* ZOXXMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FCD01E2445B900008FE3B9 /* ZOXXMainScene.m */; };
 		22FCD0212445B91C008FE3B9 /* ZOXXMainSceneView.sks in Resources */ = {isa = PBXBuildFile; fileRef = 22FCD0202445B91C008FE3B9 /* ZOXXMainSceneView.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		220CDAD4244710BD00548E9B /* ZOXXGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXGameViewController.h; sourceTree = "<group>"; };
-		220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXGameViewController.m; sourceTree = "<group>"; };
 		220CDADB2447FA7D00548E9B /* ZOXXCardData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXCardData.h; sourceTree = "<group>"; };
 		220CDADC2447FA7D00548E9B /* ZOXXCardData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXCardData.m; sourceTree = "<group>"; };
 		220CDADE244804E200548E9B /* ZOXXPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXPlayer.h; sourceTree = "<group>"; };
@@ -47,15 +60,52 @@
 		220CDAEC24482DF400548E9B /* touXiang05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touXiang05.png; sourceTree = "<group>"; };
 		220CDAEF244833CC00548E9B /* ZOXXGameManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXGameManager.h; sourceTree = "<group>"; };
 		220CDAF0244833CC00548E9B /* ZOXXGameManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXGameManager.m; sourceTree = "<group>"; };
+		224888E42454144A0011881B /* ZOXXSpriteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXSpriteButton.m; sourceTree = "<group>"; };
+		224888E52454144A0011881B /* ZOXXSpriteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXSpriteButton.h; sourceTree = "<group>"; };
+		224888E8245414590011881B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		224888E9245414590011881B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		224888EA245414590011881B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		224888EB245414590011881B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		224888EE2454149E0011881B /* ZOXXAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXAlertViewController.h; sourceTree = "<group>"; };
+		224888EF2454149E0011881B /* ZOXXAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXAlertViewController.m; sourceTree = "<group>"; };
+		224888F02454149E0011881B /* ZOXXAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZOXXAlertViewController.xib; sourceTree = "<group>"; };
+		224888F4245414B20011881B /* ZOXXSelectLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXSelectLevelScene.h; sourceTree = "<group>"; };
+		224888F5245414B20011881B /* ZOXXSelectLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXSelectLevelScene.m; sourceTree = "<group>"; };
+		224888F6245414B20011881B /* ZOXXSelectLevelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXSelectLevelScene.sks; sourceTree = "<group>"; };
+		224888FA245414C70011881B /* ZOXXWanJiaDangAn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXWanJiaDangAn.h; sourceTree = "<group>"; };
+		224888FB245414C70011881B /* ZOXXWanJiaDangAn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXWanJiaDangAn.m; sourceTree = "<group>"; };
+		224888FC245414C70011881B /* ZOXXWanJiaDangAn.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXWanJiaDangAn.sks; sourceTree = "<group>"; };
+		22488900245414D70011881B /* ZOXXTran.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXTran.h; sourceTree = "<group>"; };
+		22488901245414D70011881B /* ZOXXGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXGuideViewController.h; sourceTree = "<group>"; };
+		22488902245414D70011881B /* ZOXXGuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZOXXGuideViewController.xib; sourceTree = "<group>"; };
+		22488903245414D70011881B /* ZOXXGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXGuideViewController.m; sourceTree = "<group>"; };
+		22488904245414D70011881B /* ZOXXTran.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXTran.m; sourceTree = "<group>"; };
+		22488908245414E50011881B /* ZOXXSaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXSaveData.h; sourceTree = "<group>"; };
+		22488909245414E50011881B /* ZOXXSaveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXSaveData.m; sourceTree = "<group>"; };
+		2248890C245414F20011881B /* ZOXXShopStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXShopStore.h; sourceTree = "<group>"; };
+		2248890D245414F20011881B /* ZOXXShopStore.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXShopStore.sks; sourceTree = "<group>"; };
+		2248890E245414F20011881B /* ZOXXShopStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXShopStore.m; sourceTree = "<group>"; };
+		224889122454150E0011881B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		224889132454150E0011881B /* ZOXXImproveRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXImproveRun.m; sourceTree = "<group>"; };
+		224889152454150E0011881B /* ZOXXJiaMi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXJiaMi.m; sourceTree = "<group>"; };
+		224889162454150E0011881B /* ZOXXLogPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXLogPlayer.m; sourceTree = "<group>"; };
+		224889172454150E0011881B /* ZOXXGennalTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXGennalTool.m; sourceTree = "<group>"; };
+		224889182454150E0011881B /* UIImage+ZOXXSave2Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ZOXXSave2Photo.m"; sourceTree = "<group>"; };
+		224889192454150E0011881B /* NSString+ZOXXOffset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+ZOXXOffset.h"; sourceTree = "<group>"; };
+		2248891A2454150E0011881B /* ZOXXGameTiYanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXGameTiYanViewController.h; sourceTree = "<group>"; };
+		2248891B2454150E0011881B /* ZOXXImproveRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXImproveRun.h; sourceTree = "<group>"; };
+		2248891C2454150E0011881B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		2248891E2454150E0011881B /* ZOXXGennalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXGennalTool.h; sourceTree = "<group>"; };
+		2248891F2454150E0011881B /* ZOXXLogPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXLogPlayer.h; sourceTree = "<group>"; };
+		224889202454150E0011881B /* ZOXXJiaMi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOXXJiaMi.h; sourceTree = "<group>"; };
+		224889212454150E0011881B /* ZOXXGameTiYanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOXXGameTiYanViewController.m; sourceTree = "<group>"; };
+		224889222454150E0011881B /* NSString+ZOXXOffset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+ZOXXOffset.m"; sourceTree = "<group>"; };
+		224889232454150E0011881B /* UIImage+ZOXXSave2Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ZOXXSave2Photo.h"; sourceTree = "<group>"; };
 		22FCCFE624458CCD008FE3B9 /* CardGame4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardGame4.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		22FCCFE924458CCD008FE3B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		22FCCFEC24458CCD008FE3B9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		22FCCFEE24458CCD008FE3B9 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		22FCCFF024458CCD008FE3B9 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		22FCCFF124458CCD008FE3B9 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		22FCCFF324458CCD008FE3B9 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
-		22FCCFF424458CCD008FE3B9 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		22FCCFF724458CCD008FE3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22FCCFF924458CCE008FE3B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22FCCFFC24458CCE008FE3B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,8 +114,6 @@
 		22FCD00724458D7B008FE3B9 /* ZOXXBeginSceneFirst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXBeginSceneFirst.h; sourceTree = "<group>"; };
 		22FCD00824458D7B008FE3B9 /* ZOXXBeginSceneFirst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXBeginSceneFirst.m; sourceTree = "<group>"; };
 		22FCD00A24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXBeginSceneFirst.sks; sourceTree = "<group>"; };
-		22FCD0162445AFCD008FE3B9 /* ZOXXAlertViewControll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXAlertViewControll.h; sourceTree = "<group>"; };
-		22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXAlertViewControll.m; sourceTree = "<group>"; };
 		22FCD01D2445B900008FE3B9 /* ZOXXMainScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZOXXMainScene.h; sourceTree = "<group>"; };
 		22FCD01E2445B900008FE3B9 /* ZOXXMainScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZOXXMainScene.m; sourceTree = "<group>"; };
 		22FCD0202445B91C008FE3B9 /* ZOXXMainSceneView.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ZOXXMainSceneView.sks; sourceTree = "<group>"; };
@@ -85,6 +133,8 @@
 		220CDAD72447F99A00548E9B /* GameModel */ = {
 			isa = PBXGroup;
 			children = (
+				22488908245414E50011881B /* ZOXXSaveData.h */,
+				22488909245414E50011881B /* ZOXXSaveData.m */,
 				220CDADB2447FA7D00548E9B /* ZOXXCardData.h */,
 				220CDADC2447FA7D00548E9B /* ZOXXCardData.m */,
 				220CDADE244804E200548E9B /* ZOXXPlayer.h */,
@@ -98,6 +148,8 @@
 		220CDAE124480A1900548E9B /* GameView */ = {
 			isa = PBXGroup;
 			children = (
+				224888E52454144A0011881B /* ZOXXSpriteButton.h */,
+				224888E42454144A0011881B /* ZOXXSpriteButton.m */,
 				220CDAE224480A3600548E9B /* ZOXXCard.h */,
 				220CDAE324480A3600548E9B /* ZOXXCard.m */,
 			);
@@ -123,6 +175,82 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		224888E7245414590011881B /* MainFile */ = {
+			isa = PBXGroup;
+			children = (
+				224888E8245414590011881B /* AppDelegate.h */,
+				224888E9245414590011881B /* GameViewController.m */,
+				224888EA245414590011881B /* AppDelegate.m */,
+				224888EB245414590011881B /* GameViewController.h */,
+			);
+			path = MainFile;
+			sourceTree = "<group>";
+		};
+		224888F3245414B20011881B /* ZOXXSelectLevelScene */ = {
+			isa = PBXGroup;
+			children = (
+				224888F4245414B20011881B /* ZOXXSelectLevelScene.h */,
+				224888F5245414B20011881B /* ZOXXSelectLevelScene.m */,
+				224888F6245414B20011881B /* ZOXXSelectLevelScene.sks */,
+			);
+			path = ZOXXSelectLevelScene;
+			sourceTree = "<group>";
+		};
+		224888F9245414C70011881B /* ZOXXPlayDangAn */ = {
+			isa = PBXGroup;
+			children = (
+				224888FA245414C70011881B /* ZOXXWanJiaDangAn.h */,
+				224888FB245414C70011881B /* ZOXXWanJiaDangAn.m */,
+				224888FC245414C70011881B /* ZOXXWanJiaDangAn.sks */,
+			);
+			path = ZOXXPlayDangAn;
+			sourceTree = "<group>";
+		};
+		224888FF245414D70011881B /* ZOXXGuide */ = {
+			isa = PBXGroup;
+			children = (
+				22488900245414D70011881B /* ZOXXTran.h */,
+				22488901245414D70011881B /* ZOXXGuideViewController.h */,
+				22488902245414D70011881B /* ZOXXGuideViewController.xib */,
+				22488903245414D70011881B /* ZOXXGuideViewController.m */,
+				22488904245414D70011881B /* ZOXXTran.m */,
+			);
+			path = ZOXXGuide;
+			sourceTree = "<group>";
+		};
+		2248890B245414F20011881B /* ZOXXShoppohs */ = {
+			isa = PBXGroup;
+			children = (
+				2248890C245414F20011881B /* ZOXXShopStore.h */,
+				2248890D245414F20011881B /* ZOXXShopStore.sks */,
+				2248890E245414F20011881B /* ZOXXShopStore.m */,
+			);
+			path = ZOXXShoppohs;
+			sourceTree = "<group>";
+		};
+		224889112454150E0011881B /* ZOXXTool */ = {
+			isa = PBXGroup;
+			children = (
+				224889192454150E0011881B /* NSString+ZOXXOffset.h */,
+				224889222454150E0011881B /* NSString+ZOXXOffset.m */,
+				2248891C2454150E0011881B /* Reachability.h */,
+				224889122454150E0011881B /* Reachability.m */,
+				224889232454150E0011881B /* UIImage+ZOXXSave2Photo.h */,
+				224889182454150E0011881B /* UIImage+ZOXXSave2Photo.m */,
+				2248891A2454150E0011881B /* ZOXXGameTiYanViewController.h */,
+				224889212454150E0011881B /* ZOXXGameTiYanViewController.m */,
+				2248891E2454150E0011881B /* ZOXXGennalTool.h */,
+				224889172454150E0011881B /* ZOXXGennalTool.m */,
+				2248891B2454150E0011881B /* ZOXXImproveRun.h */,
+				224889132454150E0011881B /* ZOXXImproveRun.m */,
+				224889202454150E0011881B /* ZOXXJiaMi.h */,
+				224889152454150E0011881B /* ZOXXJiaMi.m */,
+				2248891F2454150E0011881B /* ZOXXLogPlayer.h */,
+				224889162454150E0011881B /* ZOXXLogPlayer.m */,
+			);
+			path = ZOXXTool;
+			sourceTree = "<group>";
+		};
 		22FCCFDD24458CCD008FE3B9 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +270,12 @@
 		22FCCFE824458CCD008FE3B9 /* CardGame4 */ = {
 			isa = PBXGroup;
 			children = (
+				224889112454150E0011881B /* ZOXXTool */,
+				2248890B245414F20011881B /* ZOXXShoppohs */,
+				224888FF245414D70011881B /* ZOXXGuide */,
+				224888F9245414C70011881B /* ZOXXPlayDangAn */,
+				224888F3245414B20011881B /* ZOXXSelectLevelScene */,
+				224888E7245414590011881B /* MainFile */,
 				220CDAE524482A2D00548E9B /* Resources */,
 				220CDAE124480A1900548E9B /* GameView */,
 				220CDAD72447F99A00548E9B /* GameModel */,
@@ -150,17 +284,11 @@
 				22FCD01A2445B880008FE3B9 /* Example */,
 				22FCD0192445AFD6008FE3B9 /* ZOXXCustomView */,
 				22FCD00624458D30008FE3B9 /* ZOXXBeginScene */,
-				22FCCFE924458CCD008FE3B9 /* AppDelegate.h */,
-				22FCCFEA24458CCD008FE3B9 /* AppDelegate.m */,
-				22FCCFF324458CCD008FE3B9 /* GameViewController.h */,
-				22FCCFF424458CCD008FE3B9 /* GameViewController.m */,
 				22FCCFF624458CCD008FE3B9 /* Main.storyboard */,
 				22FCCFF924458CCE008FE3B9 /* Assets.xcassets */,
 				22FCCFFB24458CCE008FE3B9 /* LaunchScreen.storyboard */,
 				22FCCFFE24458CCE008FE3B9 /* Info.plist */,
 				22FCCFFF24458CCE008FE3B9 /* main.m */,
-				220CDAD4244710BD00548E9B /* ZOXXGameViewController.h */,
-				220CDAD5244710BD00548E9B /* ZOXXGameViewController.m */,
 			);
 			path = CardGame4;
 			sourceTree = "<group>";
@@ -178,8 +306,9 @@
 		22FCD0192445AFD6008FE3B9 /* ZOXXCustomView */ = {
 			isa = PBXGroup;
 			children = (
-				22FCD0162445AFCD008FE3B9 /* ZOXXAlertViewControll.h */,
-				22FCD0172445AFCD008FE3B9 /* ZOXXAlertViewControll.m */,
+				224888EE2454149E0011881B /* ZOXXAlertViewController.h */,
+				224888EF2454149E0011881B /* ZOXXAlertViewController.m */,
+				224888F02454149E0011881B /* ZOXXAlertViewController.xib */,
 			);
 			path = ZOXXCustomView;
 			sourceTree = "<group>";
@@ -262,16 +391,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2248890F245414F20011881B /* ZOXXShopStore.sks in Resources */,
 				22FCCFF824458CCD008FE3B9 /* Main.storyboard in Resources */,
-				220CDAED24482DF400548E9B /* touXiang03.png in Resources */,
+				22488905245414D70011881B /* ZOXXGuideViewController.xib in Resources */,
 				22FCD0212445B91C008FE3B9 /* ZOXXMainSceneView.sks in Resources */,
 				22FCCFED24458CCD008FE3B9 /* GameScene.sks in Resources */,
-				220CDAEA24482B2F00548E9B /* renWu03.png in Resources */,
+				224888F22454149E0011881B /* ZOXXAlertViewController.xib in Resources */,
+				224888F8245414B20011881B /* ZOXXSelectLevelScene.sks in Resources */,
 				22FCCFFA24458CCE008FE3B9 /* Assets.xcassets in Resources */,
-				220CDAE924482B2F00548E9B /* renWu05.png in Resources */,
+				224888FE245414C70011881B /* ZOXXWanJiaDangAn.sks in Resources */,
 				22FCCFFD24458CCE008FE3B9 /* LaunchScreen.storyboard in Resources */,
 				22FCD00B24458DC1008FE3B9 /* ZOXXBeginSceneFirst.sks in Resources */,
-				220CDAEE24482DF400548E9B /* touXiang05.png in Resources */,
 				22FCCFEF24458CCD008FE3B9 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,18 +413,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22488906245414D70011881B /* ZOXXGuideViewController.m in Sources */,
 				22FCD01F2445B900008FE3B9 /* ZOXXMainScene.m in Sources */,
 				22FCCFF224458CCD008FE3B9 /* GameScene.m in Sources */,
+				2248892B2454150E0011881B /* ZOXXGameTiYanViewController.m in Sources */,
+				22488907245414D70011881B /* ZOXXTran.m in Sources */,
+				224888EC245414590011881B /* GameViewController.m in Sources */,
 				220CDADD2447FA7D00548E9B /* ZOXXCardData.m in Sources */,
-				22FCD0182445AFCD008FE3B9 /* ZOXXAlertViewControll.m in Sources */,
-				22FCCFF524458CCD008FE3B9 /* GameViewController.m in Sources */,
+				2248890A245414E60011881B /* ZOXXSaveData.m in Sources */,
+				2248892A2454150E0011881B /* UIImage+ZOXXSave2Photo.m in Sources */,
+				224889292454150E0011881B /* ZOXXGennalTool.m in Sources */,
+				224888F7245414B20011881B /* ZOXXSelectLevelScene.m in Sources */,
+				224888FD245414C70011881B /* ZOXXWanJiaDangAn.m in Sources */,
 				220CDAE0244804E200548E9B /* ZOXXPlayer.m in Sources */,
+				224889242454150E0011881B /* Reachability.m in Sources */,
 				22FCD00024458CCE008FE3B9 /* main.m in Sources */,
-				220CDAD6244710BD00548E9B /* ZOXXGameViewController.m in Sources */,
 				220CDAE424480A3600548E9B /* ZOXXCard.m in Sources */,
-				22FCCFEB24458CCD008FE3B9 /* AppDelegate.m in Sources */,
+				224889272454150E0011881B /* ZOXXJiaMi.m in Sources */,
+				22488910245414F20011881B /* ZOXXShopStore.m in Sources */,
+				2248892C2454150E0011881B /* NSString+ZOXXOffset.m in Sources */,
+				224888E62454144A0011881B /* ZOXXSpriteButton.m in Sources */,
+				224889252454150E0011881B /* ZOXXImproveRun.m in Sources */,
+				224888F12454149E0011881B /* ZOXXAlertViewController.m in Sources */,
+				224889282454150E0011881B /* ZOXXLogPlayer.m in Sources */,
 				220CDAF1244833CC00548E9B /* ZOXXGameManager.m in Sources */,
 				22FCD00924458D7B008FE3B9 /* ZOXXBeginSceneFirst.m in Sources */,
+				224888ED245414590011881B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

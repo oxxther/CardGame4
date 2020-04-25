@@ -22,77 +22,61 @@
     
     //给不同的卡一个描述
     switch (type) {
-        case ZOXXCardTypeQuanGong:
+        case ZOXXCardTypePingA:
         {
-            self.descriptionString = @"即“拳脚攻击”，此牌可对敌人造成1点伤害。";
+            self.descriptionString = @"普通攻击";
+            self.name = @"普攻";
+            self.imagePath = [self getImagePath:@"MainPage9.png"];
         }
             break;
-        case ZOXXCardTypeBingGong:
+        case ZOXXCardTypeJiNeng:
         {
-            self.descriptionString = @"即“兵器攻击”，此牌可对敌人造成2点伤害，前提是先要装备上“兵器”。";
+            self.descriptionString = @"技能攻击";
+            self.name = @"技能";
+            self.imagePath = [self getImagePath:@"MainPage3.png"];
         }
             break;
-        case ZOXXCardTypeDuoShan:
+        case ZOXXCardTypeShanBi:
         {
-            self.descriptionString = @"此牌可抵消敌人的“拳攻”、“兵攻”。";
+            self.descriptionString = @"此牌可抵消敌人的攻击";
+            self.name = @"闪避";
+            self.imagePath = [self getImagePath:@"MainPage5.png"];
         }
             break;
-        case ZOXXCardTypeZhaoJia:
+        case ZOXXCardTypeGeDang:
         {
-            self.descriptionString = @"此牌可抵消敌人的“拳攻”、“兵攻”（除了“加力”后的攻击）。";
+            self.descriptionString = @"此牌可抵消敌人的普攻";
+            self.name = @"格挡";
+            self.imagePath = [self getImagePath:@"MainPage6.png"];
         }
             break;
-        case ZOXXCardTypeDaZuo:
+        case ZOXXCardTypeMingXiang:
         {
-            self.descriptionString = @"此牌可增加1点内力。";
-        }
-            break;
-        case ZOXXCardTypeXiQi:
-        {
-            self.descriptionString = @"此牌会消耗1点内力，同时恢复体力1点。";
-        }
-            break;
-        case ZOXXCardTypeJiaLi:
-        {
-            self.descriptionString = @"此牌会消耗1点内力，“加力”后的“拳攻”、“兵攻”，对手只能“躲闪”，不能“招架”；同时“加力”后的伤害加1。";
-        }
-            break;
-        case ZOXXCardTypeLingpai:
-        {
-            self.descriptionString = @"即“门派令牌”，此牌可对敌人造成1点伤害。对手可用“拳攻”或“兵攻”抵消。";
+            self.descriptionString = @"此牌回复1点蓝";
+            self.name = @"冥想";
+            self.imagePath = [self getImagePath:@"MainPage7.png"];
         }
             break;
         case ZOXXCardTypeBingQi:
         {
-            self.descriptionString = @"此牌可装备“兵器”；若已装备“兵器”，此牌可重新换取一张新的卡牌。";
+            self.descriptionString = @"此牌永久增加攻击1。";
+            self.name = @"加攻击";
+            self.imagePath = [self getImagePath:@"MainPage4.png"];
         }
             break;
         case ZOXXCardTypeFuShi:
         {
-            self.descriptionString = @"此牌可装备“服饰”，体力上限加1，同时一定几率能减缓敌人对你的伤害。若已装备“服饰”，此牌可重新换取一张新的卡牌。";
-        }
-            break;
-        case ZOXXCardTypeMiaoShou:
-        {
-            self.descriptionString = @"此牌有两种效果可选，1.抽取对手卡牌1张。2.自己获得2张卡牌。";
-        }
-            break;
-        case ZOXXCardTypePoFang:
-        {
-            self.descriptionString = @"此牌可用来弃置对手的装备1件，“兵器”或“服饰”。";
-        }
-            break;
-        case ZOXXCardTypeDianXue:
-        {
-            self.descriptionString = @"此牌使用时需作判断，若对手卡牌中没有“打坐”，“点穴”即算成功，对手将无法进行出牌；反之，“点穴”视作失败，自己要损失卡牌1张。";
-        }
-            break;
-        default:
-        {
-            self.descriptionString = @"另外还有“御剑”、“飞翔”、“烟幕”、“法力”、“分身”、“暗器”等等特殊卡牌，为各门派特有，需玩家自己去发现。";
+            self.descriptionString = @"此牌永久增加防御1";
+            self.name = @"加防御";
+            self.imagePath = [self getImagePath:@"MainPage8.png"];
         }
             break;
     }
+}
+
+#pragma mark - private
+- (NSString *)getImagePath:(NSString *)imageName{
+    return [[NSBundle mainBundle].bundlePath stringByAppendingPathComponent:imageName];
 }
 
 @end

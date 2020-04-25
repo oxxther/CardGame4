@@ -11,6 +11,7 @@
 #import "ZOXXPlayer.h"
 #import "ZOXXCardData.h"
 #import "ZOXXCard.h"
+#import "ZOXXMainScene.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) ZOXXPlayer * wanjia;
 
 @property (nonatomic) ZOXXPlayer * laoda;
+
+@property (nonatomic) void (^endGame)(void);
 
 //游戏开始
 - (void)gameStart:(void (^)(void))finishedBlock;
@@ -56,6 +59,9 @@ NS_ASSUME_NONNULL_BEGIN
 //进入结算阶段     |
 //               |
 //  -------------|
+- (void)enterJieSuanState:(ZOXXCardType)cardType isUseCard:(BOOL)use;
+
+- (void)showDesktop;
 
 @end
 

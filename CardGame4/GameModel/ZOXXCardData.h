@@ -19,34 +19,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSUInteger, ZOXXCardType) {
-    /** 拳攻 */
-    ZOXXCardTypeQuanGong = 1,
-    /** 兵攻 */
-    ZOXXCardTypeBingGong = 1 << 1,
+    /** 平砍 躲闪和格挡都行*/
+    ZOXXCardTypePingA = 1,
+    /** 放技能 -- 只能躲闪 */
+    ZOXXCardTypeJiNeng = 1 << 1,
     /** 躲闪 */
-    ZOXXCardTypeDuoShan = 1 << 2,
-    /** 招架 */
-    ZOXXCardTypeZhaoJia = 1 << 3,
-    /** 打坐 */
-    ZOXXCardTypeDaZuo = 1 << 4,
-    /** 吸气 */
-    ZOXXCardTypeXiQi = 1 << 5,
-    /** 加力 */
-    ZOXXCardTypeJiaLi = 1 << 6,
-    /** 令牌 */
-    ZOXXCardTypeLingpai = 1 << 7,
-    /** 兵器 */
-    ZOXXCardTypeBingQi = 1 << 8,
-    /** 服饰 */
-    ZOXXCardTypeFuShi = 1 << 9,
-    /** 妙手 */
-    ZOXXCardTypeMiaoShou = 1 << 10,
-    /** 破防 */
-    ZOXXCardTypePoFang = 1 << 11,
-    /** 点穴 */
-    ZOXXCardTypeDianXue = 1 << 12,
-    /** 其他 */
-    ZOXXCardTypeOther = 1 << 13,
+    ZOXXCardTypeShanBi = 1 << 2,
+    /** 格挡 */
+    ZOXXCardTypeGeDang = 1 << 3,
+    /** 冥想 -- 回蓝 */
+    ZOXXCardTypeMingXiang = 1 << 4,
+    /** 兵器 -- 攻击加一*/
+    ZOXXCardTypeBingQi = 1 << 5,
+    /** 服饰 -- 防御加一*/
+    ZOXXCardTypeFuShi = 1 << 6,
 };
 
 @interface ZOXXCardData : NSObject
@@ -55,9 +41,9 @@ typedef NS_ENUM(NSUInteger, ZOXXCardType) {
 
 @property (nonatomic) NSString * descriptionString;
 
-@property (nonatomic) ZOXXCardType type;
+@property (nonatomic) NSString * name;
 
-@property (nonatomic) void (^extendBlock)(void);
+@property (nonatomic) ZOXXCardType type;
 
 + (instancetype)createWithType:(ZOXXCardType)type;
 
